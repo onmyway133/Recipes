@@ -8,7 +8,8 @@ Recipes App
 - Use Xcode 9.3, Swift 4.0
 - Use data from http://food2fork.com/about/api
 - Good practices for structuring iOS app and handle dependencies
-- I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture) and how to structure code in a better way. I've tried many things. In this project I use old good MVC.
+- I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture) and how to structure code in a better way. Each may be suitable for certain types of application. In this project, I use good old MVC because it's simple and does the job.
+- Avoid unnecessary dependencies
 - Ideas are from my experience and learnings from community. Pull requests are more than welcome ❤️
 
 ### Project
@@ -72,6 +73,68 @@ Human Interface Guidelines - App Icon](https://developer.apple.com/ios/human-int
 - Add new Run Script Phrase to execute `swiftlint` after compiling
 
 ![](Screenshots/SwiftLint.png)
+
+### Model
+
+- It may sound boring but clients are just a prettier way to represent the API response. The model is perhaps the most basic thing and we use it a lot in the app. It plays such an important role and there can be some obvious bugs related to malformed models and assumption about how a model should be parsed.
+- We should have test for every model of the app. Ideally we need automate testing of models from API response in case the model is changed from the backend.
+- From Swift 4, we can conform our model to [Codable](https://developer.apple.com/documentation/swift/codable) to easily serialise to and from json.
+- Model should be immutable
+
+```swift
+struct Recipe: Codable {
+  let publisher: String
+  let url: URL
+  let sourceUrl: String
+  let id: String
+  let title: String
+  let imageUrl: String
+  let socialRank: Double
+  let publisherUrl: URL
+
+  enum CodingKeys: String, CodingKey {
+    case publisher
+    case url = "f2f_url"
+    case sourceUrl = "source_url"
+    case id = "recipe_id"
+    case title
+    case imageUrl = "image_url"
+    case socialRank = "social_rank"
+    case publisherUrl = "publisher_url"
+  }
+}
+```
+
+- We can use some test frameworks if you like fancy syntax or Rspec style. Some 3rd party test frameworks may have issues. I find `XCTest` good enough.
+
+```swift
+import XCTest
+@testable import Recipes
+
+class RecipesTests: XCTestCase {
+  func testParsing() throws {
+    let json: [String: Any] = [
+      "publisher": "Two Peas and Their Pod",
+      "f2f_url": "http://food2fork.com/view/975e33",
+      "title": "No-Bake Chocolate Peanut Butter Pretzel Cookies",
+      "source_url": "http://www.twopeasandtheirpod.com/no-bake-chocolate-peanut-butter-pretzel-cookies/",
+      "recipe_id": "975e33",
+      "image_url": "http://static.food2fork.com/NoBakeChocolatePeanutButterPretzelCookies44147.jpg",
+      "social_rank": 99.99999999999974,
+      "publisher_url": "http://www.twopeasandtheirpod.com"
+    ]
+
+    let data = try JSONSerialization.data(withJSONObject: json, options: [])
+    let decoder = JSONDecoder()
+    let recipe = try decoder.decode(Recipe.self, from: data)
+
+    XCTAssertEqual(recipe.title, "No-Bake Chocolate Peanut Butter Pretzel Cookies")
+    XCTAssertEqual(recipe.id, "975e33")
+    XCTAssertEqual(recipe.url, URL(string: "http://food2fork.com/view/975e33")!)
+  }
+}
+
+```
 
 ## Credit
 
