@@ -22,6 +22,9 @@
 		D2144AC620422686005CD925 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AC520422686005CD925 /* AppConfig.swift */; };
 		D2144AC8204226F6005CD925 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AC7204226F6005CD925 /* UICollectionView+Extensions.swift */; };
 		D2144ACA20422E19005CD925 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AC920422E19005CD925 /* Color.swift */; };
+		D2144ACD20422EA5005CD925 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ACC20422EA5005CD925 /* ScrollableView.swift */; };
+		D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ACE20422EAE005CD925 /* BaseController.swift */; };
+		D2144AD120422ED5005CD925 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD020422ED5005CD925 /* RecipeDetailView.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -75,6 +78,9 @@
 		D2144AC520422686005CD925 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		D2144AC7204226F6005CD925 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		D2144AC920422E19005CD925 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D2144ACC20422EA5005CD925 /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
+		D2144ACE20422EAE005CD925 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		D2144AD020422ED5005CD925 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */,
+				D2144AD020422ED5005CD925 /* RecipeDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -181,6 +188,7 @@
 		D2144AC120421FD9005CD925 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				D2144ACE20422EAE005CD925 /* BaseController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -193,6 +201,14 @@
 				D2144AC920422E19005CD925 /* Color.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		D2144ACB20422E8F005CD925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2144ACC20422EA5005CD925 /* ScrollableView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D2261FAC204162D50072956E /* Resource */ = {
@@ -225,6 +241,7 @@
 		D2261FC520416C7B0072956E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2144ACB20422E8F005CD925 /* View */,
 				D2144AC22042267A005CD925 /* App */,
 				D2144AC120421FD9005CD925 /* Base */,
 				D2144ABC20421C0F005CD925 /* Adapter */,
@@ -645,7 +662,9 @@
 				D2144AC020421E4C005CD925 /* RecipeCell.swift in Sources */,
 				D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */,
 				D2261FCB204171690072956E /* Recipe.swift in Sources */,
+				D2144ACD20422EA5005CD925 /* ScrollableView.swift in Sources */,
 				D2144AB3204216CB005CD925 /* AppFlowController.swift in Sources */,
+				D2144AD120422ED5005CD925 /* RecipeDetailView.swift in Sources */,
 				D2144AAD204214D4005CD925 /* RecipeListViewController.swift in Sources */,
 				D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D2144AC42042267A005CD925 /* AppDelegate.swift in Sources */,
@@ -655,6 +674,7 @@
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,
 				D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */,
 				D21D3DD02041D5DC00EF97BC /* UIImageView+Extensions.swift in Sources */,
+				D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */,
 				D2144AC8204226F6005CD925 /* UICollectionView+Extensions.swift in Sources */,
 				D2144AA2204212DD005CD925 /* UIColor+Extensions.swift in Sources */,
 				D2144ABE20421C16005CD925 /* Adapter.swift in Sources */,

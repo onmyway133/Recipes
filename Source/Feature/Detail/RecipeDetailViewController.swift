@@ -9,7 +9,7 @@
 import UIKit
 
 /// Show detail information for a recipe
-final class RecipeDetailViewController: UIViewController {
+final class RecipeDetailViewController: BaseController<RecipeDetailView> {
   private let recipe: Recipe
 
   // MARK: - Init
