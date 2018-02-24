@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = appFlowController
     window?.makeKeyAndVisible()
 
+    appFlowController.start()
+
     return true
   }
 }
