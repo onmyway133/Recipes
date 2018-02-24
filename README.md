@@ -18,6 +18,12 @@ Recipes App
 
 ![](Screenshots/Project.png)
 
+### Code convention
+
+- I agree with most of the style guides in https://github.com/raywenderlich/swift-style-guide
+- Use consistent and easy-to-reason indentation [Indenting Swift code](https://github.com/onmyway133/blog/issues/93)
+- Prefer camelCase [Using camelCase for abbreviations](https://github.com/onmyway133/blog/issues/147)
+
 ### Git
 
 - Use `.gitignore` file from https://www.gitignore.io/api/swift
