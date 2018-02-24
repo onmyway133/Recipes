@@ -10,7 +10,7 @@ Recipes App
 
 ### Project
 
-- Create new project, select both Unit Tests and UI Tests
+- Create new project, select both Unit Tests and UI Tests as we should write tests early.
 - Organising files
 
   - Source: contains source code files, splitted into features
@@ -21,7 +21,9 @@ Recipes App
 ### Git
 
 - Use `.gitignore` file from https://www.gitignore.io/api/swift
-- There are both pros and cons of checking in dependencies files (CocoaPOds and Carthage). Here I choose to ignore them to not clutter the code base.
+- There are both pros and cons in [checking in dependencies](https://guides.cocoapods.org/using/using-cocoapods#should-i-check-the-pods-directory-into-source-control) files (CocoaPods and Carthage). Here I choose to ignore them to not clutter the code base.
+
+> Whether or not you check in the Pods directory, the Podfile and Podfile.lock should always be kept under version control.
 
 ### Launch Screen
 
