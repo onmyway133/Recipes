@@ -10,6 +10,7 @@ Recipes App
 - Good practices for structuring iOS app and handle dependencies
 - I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture) and how to structure code in a better way. Each may be suitable for certain types of application. In this project, I use good old MVC because it's simple and does the job.
 - Avoid unnecessary dependencies
+- Embrace functional programming
 - Ideas are from my experience and learnings from community. Pull requests are more than welcome ❤️
 
 ### Project
