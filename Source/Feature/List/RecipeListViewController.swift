@@ -44,6 +44,7 @@ final class RecipeListViewController: UIViewController {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = adapter
     collectionView.delegate = adapter
+    collectionView.register(cellType: RecipeCell.self)
 
     adapter.select = select
     adapter.configure = { recipe, cell in

@@ -9,7 +9,8 @@
 import UIKit
 
 /// A generic adapter to act as convenient DataSource and Delegate for UICollectionView
-final class Adapter<T, Cell: UICollectionViewCell>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+final class Adapter<T, Cell: UICollectionViewCell>: NSObject,
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   var items: [T] = []
   var configure: ((T, Cell) -> Void)?
   var select: ((T) -> Void)?
@@ -25,18 +26,20 @@ final class Adapter<T, Cell: UICollectionViewCell>: NSObject, UICollectionViewDa
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let item = items[indexPath.item]
 
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: Cell.self), for: indexPath)
-
-    if let cell = cell as? Cell {
-      configure?(item, cell)
-      return cell
-    } else {
-      fatalError()
-    }
+    let cell: Cell = collectionView.dequeue(indexPath: indexPath)
+    configure?(item, cell)
+    return cell
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let item = items[indexPath.item]
     select?(item)
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    return CGSize(width: collectionView.frame.size.width, height: 50)
   }
 }

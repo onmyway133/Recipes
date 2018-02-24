@@ -17,7 +17,10 @@ final class RecipesService {
   }
 
   @discardableResult func fetchTopRating(completion: @escaping ([Recipe]) -> Void) -> URLSessionTask? {
-    let resource = NetworkService.Resource(url: baseUrl)
+    let resource = NetworkService.Resource(url: baseUrl, parameters: [
+      "key": AppConfig.apiKey
+    ])
+
     return networkService.fetch(resource: resource, completion: { data in
       DispatchQueue.main.async {
         completion(data.flatMap({ RecipesResponse.make(data: $0)?.recipes }) ?? [])
@@ -27,6 +30,7 @@ final class RecipesService {
 
   @discardableResult func search(query: String, completion: @escaping ([Recipe]) -> Void) -> URLSessionTask? {
     let resource = NetworkService.Resource(url: baseUrl, parameters: [
+      "key": AppConfig.apiKey,
       "q": query
     ])
 
