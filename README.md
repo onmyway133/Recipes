@@ -53,6 +53,14 @@ Human Interface Guidelines - App Icon](https://developer.apple.com/ios/human-int
 
 ![](Screenshots/AppIcon.png)
 
+### API
+
+- Register for account in http://food2fork.com/about/api
+- I use [1Password](https://1password.com/) to generate and store my passwords.
+- I use [Insomnia](https://github.com/getinsomnia/insomnia) to test and analyze API response.
+
+![](Screenshots/Insomnia.png)
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
