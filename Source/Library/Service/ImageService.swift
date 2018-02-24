@@ -32,7 +32,9 @@ class ImageService {
     // Try load from cache
     cacheService.load(key: url.absoluteString, completion: { [weak self] cachedData in
       if let data = cachedData, let image = UIImage(data: data) {
-        completion(image)
+        DispatchQueue.main.async {
+          completion(image)
+        }
       } else {
         // Try to request from network
         let resource = NetworkService.Resource(url: url)
@@ -40,9 +42,11 @@ class ImageService {
           if let data = networkData, let image = UIImage(data: data) {
             // Save to cache
             self?.cacheService.save(data: data, key: url.absoluteString)
-            completion(image)
+            DispatchQueue.main.async {
+              completion(image)
+            }
           } else {
-            // No op
+            print("Error loading image at \(url)")
           }
         })
 
