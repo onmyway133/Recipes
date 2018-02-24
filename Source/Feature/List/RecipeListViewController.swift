@@ -15,14 +15,28 @@ final class RecipeListViewController: UIViewController {
   var select: ((Recipe) -> Void)?
 
   private var collectionView: UICollectionView!
+  private var refreshController = UIRefreshControl()
   private let adapter = Adapter<Recipe, RecipeCell>()
+  private let recipesService: RecipesService
 
   // MARK: - Init
+
+  required init(recipesService: RecipesService) {
+    self.recipesService = recipesService
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError()
+  }
+
+  // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     setup()
+    loadData()
   }
 
   private func setup() {
@@ -39,5 +53,20 @@ final class RecipeListViewController: UIViewController {
 
     view.addSubview(collectionView)
     NSLayoutConstraint.pin(view: collectionView, toEdgesOf: view)
+
+    collectionView.addSubview(refreshController)
+    refreshController.addTarget(self, action: #selector(refresh), for: .valueChanged)
+  }
+
+  @objc private func refresh() {
+    loadData()
+  }
+
+  private func loadData() {
+    refreshController.beginRefreshing()
+    recipesService.fetchTopRating(completion: { [weak self] recipes in
+      self?.adapter.items = recipes
+      self?.collectionView.reloadData()
+    })
   }
 }

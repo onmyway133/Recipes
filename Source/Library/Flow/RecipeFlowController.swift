@@ -13,7 +13,8 @@ final class RecipeFlowController: UINavigationController {
 
   /// Start the flow
   func start() {
-    let controller = RecipeListViewController()
+    let service = RecipesService(networkService: NetworkService())
+    let controller = RecipeListViewController(recipesService: service)
     viewControllers = [controller]
     controller.select = { [weak self] recipe in
       self?.startDetail(recipe: recipe)
