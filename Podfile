@@ -1,8 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 target 'Recipes' do
  
-  use_frameworks!
+  pod 'SwiftLint', '~> 0.25'
 
   # Pods for Recipes
 

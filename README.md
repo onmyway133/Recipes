@@ -21,7 +21,7 @@ Recipes App
 
 ### Code convention
 
-- I agree with most of the style guides in https://github.com/raywenderlich/swift-style-guide
+- I agree with most of the style guides in https://github.com/raywenderlich/swift-style-guide and https://github.com/github/swift-style-guide
 - Use consistent and easy-to-reason indentation [Indenting Swift code](https://github.com/onmyway133/blog/issues/93)
 - Prefer camelCase [Using camelCase for abbreviations](https://github.com/onmyway133/blog/issues/147)
 
@@ -60,6 +60,16 @@ Human Interface Guidelines - App Icon](https://developer.apple.com/ios/human-int
 - I use [Insomnia](https://github.com/getinsomnia/insomnia) to test and analyze API response.
 
 ![](Screenshots/Insomnia.png)
+
+### SwiftLint
+
+- Regardless of what platform we develop, it's good to have a linter to enfore consistent conventions
+- I use [SwiftLint](https://github.com/realm/SwiftLint)
+- Add `pod 'SwiftLint', '~> 0.25'` to `Podfile`. It's also a good practice to specify [version](https://guides.cocoapods.org/syntax/podfile.html#pod) of the dependencies
+- Add `.swiftlint.yml`. A sample can be found [here](https://github.com/realm/SwiftLint/blob/master/.swiftlint.yml)
+- Add new Run Script Phrase to execute `swiftlint` after compiling
+
+![](Screenshots/SwiftLint.png)
 
 ## Credit
 
