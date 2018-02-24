@@ -9,7 +9,7 @@ struct Recipe: Codable {
   let url: URL
 
   /// URL of the image
-  let sourceUrl: String
+  let sourceUrl: URL
 
   /// id of recipe
   let id: String
@@ -18,7 +18,7 @@ struct Recipe: Codable {
   let title: String
 
   /// URL of the image
-  let imageUrl: String
+  let imageUrl: URL
 
   /// The Social Ranking of the Recipe
   let socialRank: Double

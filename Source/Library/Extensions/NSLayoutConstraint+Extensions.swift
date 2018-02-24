@@ -18,4 +18,13 @@ extension NSLayoutConstraint {
       $0.isActive = true
     }
   }
+
+  static func pin(view: UIView, toEdgesOf anotherView: UIView) {
+    activate([
+      view.topAnchor.constraint(equalTo: anotherView.topAnchor),
+      view.leftAnchor.constraint(equalTo: anotherView.leftAnchor),
+      view.rightAnchor.constraint(equalTo: anotherView.rightAnchor),
+      view.bottomAnchor.constraint(equalTo: anotherView.bottomAnchor)
+    ])
+  }
 }

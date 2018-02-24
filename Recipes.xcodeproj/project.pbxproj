@@ -18,6 +18,7 @@
 		D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */; };
 		D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AB62042173F005CD925 /* RecipeFlowController.swift */; };
 		D2144ABE20421C16005CD925 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ABD20421C16005CD925 /* Adapter.swift */; };
+		D2144AC020421E4C005CD925 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ABF20421E4C005CD925 /* RecipeCell.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -67,6 +68,7 @@
 		D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		D2144AB62042173F005CD925 /* RecipeFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlowController.swift; sourceTree = "<group>"; };
 		D2144ABD20421C16005CD925 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
+		D2144ABF20421E4C005CD925 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				D2144AAC204214D4005CD925 /* RecipeListViewController.swift */,
+				D2144ABF20421E4C005CD925 /* RecipeCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -175,6 +178,13 @@
 				D2144ABD20421C16005CD925 /* Adapter.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		D2144AC120421FD9005CD925 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		D2261FAC204162D50072956E /* Resource */ = {
@@ -207,6 +217,7 @@
 		D2261FC520416C7B0072956E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2144AC120421FD9005CD925 /* Base */,
 				D2144ABC20421C0F005CD925 /* Adapter */,
 				D2144AAE204216C4005CD925 /* AppDelegate */,
 				D2144AB0204216C4005CD925 /* Flow */,
@@ -623,6 +634,7 @@
 				D2144AB1204216C4005CD925 /* AppDelegate.swift in Sources */,
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
 				D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */,
+				D2144AC020421E4C005CD925 /* RecipeCell.swift in Sources */,
 				D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */,
 				D2261FCB204171690072956E /* Recipe.swift in Sources */,
 				D2144AB3204216CB005CD925 /* AppFlowController.swift in Sources */,

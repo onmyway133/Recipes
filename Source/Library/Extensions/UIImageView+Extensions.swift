@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIImageView {
-  /// Use for load image from an url
+  /// Used to set image from an url
   ///
   /// - Parameter url: url for download
-  func loadImage(url: URL, placeholder: UIImage? = nil) {
+  func setImage(url: URL, placeholder: UIImage? = nil) {
     if imageService == nil {
       imageService = ImageService(networkService: NetworkService(), cacheService: CacheService())
     }
