@@ -125,6 +125,8 @@
 		D2261FAE204162D50072956E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D2261FC920416C7B0072956E /* Feature */,
+				D2261FC520416C7B0072956E /* Library */,
 				D2261FAF204162D50072956E /* ViewController.swift */,
 				D2261FB5204162D50072956E /* AppDelegate.swift */,
 			);
@@ -138,6 +140,44 @@
 				D2261FC0204163AE0072956E /* Main.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		D2261FC520416C7B0072956E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				D2261FC620416C7B0072956E /* Extensions */,
+				D2261FC720416C7B0072956E /* Model */,
+				D2261FC820416C7B0072956E /* Service */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		D2261FC620416C7B0072956E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D2261FC720416C7B0072956E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2261FC820416C7B0072956E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D2261FC920416C7B0072956E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feature;
 			sourceTree = "<group>";
 		};
 		D29C8B482041622900F6DFC0 = {
