@@ -13,4 +13,6 @@ final class RecipeListViewController: UIViewController {
 
   /// When a recipe get select
   var select: ((Recipe) -> Void)?
+
+  private var collectionView: UICollectionView!
 }
