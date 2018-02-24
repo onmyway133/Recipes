@@ -10,6 +10,7 @@
 		2DB1405B29CF577A4C5AC6A0 /* Pods_RecipesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFF210BA0C48F271B66FF16 /* Pods_RecipesUITests.framework */; };
 		456A010A541FE67397DD3F07 /* Pods_RecipesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C603ABB2DDC033874DEEFEB5 /* Pods_RecipesTests.framework */; };
 		D2144AA2204212DD005CD925 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */; };
+		D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -54,6 +55,7 @@
 		C603ABB2DDC033874DEEFEB5 /* Pods_RecipesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFF210BA0C48F271B66FF16 /* Pods_RecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				D21D3DCF2041D5DC00EF97BC /* UIImageView+Extensions.swift */,
 				D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */,
+				D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
 				D2261FCB204171690072956E /* Recipe.swift in Sources */,
 				D2261FBB204162D50072956E /* AppDelegate.swift in Sources */,
+				D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */,
 				D2261FB7204162D50072956E /* ViewController.swift in Sources */,
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,
