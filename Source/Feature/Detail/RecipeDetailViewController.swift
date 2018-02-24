@@ -17,6 +17,7 @@ final class RecipeDetailViewController: UIViewController {
   required init(recipe: Recipe) {
     self.recipe = recipe
     super.init(nibName: nil, bundle: nil)
+    self.title = recipe.title
   }
 
   required init?(coder aDecoder: NSCoder) {

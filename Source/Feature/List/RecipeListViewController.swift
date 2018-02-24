@@ -15,7 +15,7 @@ final class RecipeListViewController: UIViewController {
   var select: ((Recipe) -> Void)?
 
   private var collectionView: UICollectionView!
-  private var refreshController = UIRefreshControl()
+  private var refreshControl = UIRefreshControl()
   private let adapter = Adapter<Recipe, RecipeCell>()
   private let recipesService: RecipesService
 
@@ -24,6 +24,7 @@ final class RecipeListViewController: UIViewController {
   required init(recipesService: RecipesService) {
     self.recipesService = recipesService
     super.init(nibName: nil, bundle: nil)
+    self.title = "Recipes"
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -47,6 +48,7 @@ final class RecipeListViewController: UIViewController {
     collectionView.dataSource = adapter
     collectionView.delegate = adapter
     collectionView.register(cellType: RecipeCell.self)
+    collectionView.backgroundColor = UIColor(hex: "#9E6BE0").withAlphaComponent(0.8)
 
     adapter.select = select
     adapter.configure = { recipe, cell in
@@ -57,8 +59,8 @@ final class RecipeListViewController: UIViewController {
     view.addSubview(collectionView)
     NSLayoutConstraint.pin(view: collectionView, toEdgesOf: view)
 
-    collectionView.addSubview(refreshController)
-    refreshController.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    collectionView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
   }
 
   @objc private func refresh() {
@@ -66,10 +68,11 @@ final class RecipeListViewController: UIViewController {
   }
 
   private func loadData() {
-    refreshController.beginRefreshing()
+    refreshControl.beginRefreshing()
     recipesService.fetchTopRating(completion: { [weak self] recipes in
       self?.adapter.items = recipes
       self?.collectionView.reloadData()
+      self?.refreshControl.endRefreshing()
     })
   }
 }
