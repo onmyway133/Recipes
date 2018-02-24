@@ -7,6 +7,7 @@ Recipes App
 - Support iOS 9+
 - Use data from http://food2fork.com/about/api
 - Good practices for structuring iOS app and handle dependencies
+- Ideas are from my experience and learnings from community. Pull requests are more than welcome ❤️
 
 ### Project
 
