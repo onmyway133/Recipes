@@ -12,6 +12,8 @@ import UIKit
 final class RecipeDetailViewController: UIViewController {
   private let recipe: Recipe
 
+  // MARK: - Init
+
   required init(recipe: Recipe) {
     self.recipe = recipe
     super.init(nibName: nil, bundle: nil)
@@ -19,5 +21,13 @@ final class RecipeDetailViewController: UIViewController {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError()
+  }
+
+  // MARK: - Life cycle
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.backgroundColor = .white
   }
 }

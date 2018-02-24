@@ -56,7 +56,7 @@ final class RecipeCell: UICollectionViewCell {
       imageView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.9),
       imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1),
 
-      label.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+      label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
       label.leftAnchor.constraint(equalTo: imageView.rightAnchor, constant: 8),
       label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -8)
     ])

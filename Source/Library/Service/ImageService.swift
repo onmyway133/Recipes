@@ -42,7 +42,7 @@ class ImageService {
             self?.cacheService.save(data: data, key: url.absoluteString)
             completion(image)
           } else {
-            assertionFailure()
+            // No op
           }
         })
 

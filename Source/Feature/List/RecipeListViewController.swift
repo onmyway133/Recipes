@@ -40,6 +40,8 @@ final class RecipeListViewController: UIViewController {
   }
 
   private func setup() {
+    view.backgroundColor = .white
+
     let layout = UICollectionViewFlowLayout()
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = adapter
