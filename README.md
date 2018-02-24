@@ -5,8 +5,10 @@ Recipes App
 
 - An app that showcases many recipes together with their detail information
 - Support iOS 9+
+- Use Xcode 9.3, Swift 4.0
 - Use data from http://food2fork.com/about/api
 - Good practices for structuring iOS app and handle dependencies
+- I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture) and how to structure code in a better way. I've tried many things. In this project I use old good MVC.
 - Ideas are from my experience and learnings from community. Pull requests are more than welcome ❤️
 
 ### Project
