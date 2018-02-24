@@ -11,6 +11,8 @@
 		456A010A541FE67397DD3F07 /* Pods_RecipesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C603ABB2DDC033874DEEFEB5 /* Pods_RecipesTests.framework */; };
 		D2144AA2204212DD005CD925 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */; };
 		D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */; };
+		D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */; };
+		D2144AAD204214D4005CD925 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AAC204214D4005CD925 /* RecipeListViewController.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -55,6 +57,8 @@
 		CAFF210BA0C48F271B66FF16 /* Pods_RecipesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
+		D2144AAC204214D4005CD925 /* RecipeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -126,18 +130,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D2144AA52042138D005CD925 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		D2144AA62042138D005CD925 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		D2144AAB204214D4005CD925 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D2144AAC204214D4005CD925 /* RecipeListViewController.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		D2261FAC204162D50072956E /* Resource */ = {
@@ -211,8 +217,8 @@
 		D2261FC920416C7B0072956E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D2144AAB204214D4005CD925 /* List */,
 				D2144AA62042138D005CD925 /* Detail */,
-				D2144AA52042138D005CD925 /* Home */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -584,10 +590,12 @@
 			files = (
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
 				D2261FCB204171690072956E /* Recipe.swift in Sources */,
+				D2144AAD204214D4005CD925 /* RecipeListViewController.swift in Sources */,
 				D2261FBB204162D50072956E /* AppDelegate.swift in Sources */,
 				D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */,
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,
+				D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */,
 				D21D3DD02041D5DC00EF97BC /* UIImageView+Extensions.swift in Sources */,
 				D2144AA2204212DD005CD925 /* UIColor+Extensions.swift in Sources */,
 				D21D3DCE2041D5C200EF97BC /* ImageService.swift in Sources */,
