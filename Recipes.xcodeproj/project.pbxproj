@@ -235,6 +235,7 @@
 				D29C8B4D2041622900F6DFC0 /* Sources */,
 				D29C8B4E2041622900F6DFC0 /* Frameworks */,
 				D29C8B4F2041622900F6DFC0 /* Resources */,
+				D2D1454E204182F600B31280 /* SwiftLint */,
 				D3627BD33A06E5114D95C50A /* [CP] Embed Pods Frameworks */,
 				1AC5414FD7DC6417186C42A8 /* [CP] Copy Pods Resources */,
 			);
@@ -491,6 +492,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipesUITests/Pods-RecipesUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D2D1454E204182F600B31280 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		D3627BD33A06E5114D95C50A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
