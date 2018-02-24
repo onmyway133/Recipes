@@ -37,9 +37,7 @@ final class NetworkService {
   ///   - parameters: Parameters as query items
   ///   - completion: Called when operation finishes
   /// - Returns: The data task
-  @discardableResult func fetch(resource: Resource,
-    completion: @escaping (Data?) -> Void) -> URLSessionTask? {
-
+  @discardableResult func fetch(resource: Resource, completion: @escaping (Data?) -> Void) -> URLSessionTask? {
     guard let request = makeRequest(resource: resource) else {
       completion(nil)
       return nil

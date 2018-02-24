@@ -13,12 +13,15 @@
 		D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */; };
 		D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */; };
 		D2144AAD204214D4005CD925 /* RecipeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AAC204214D4005CD925 /* RecipeListViewController.swift */; };
+		D2144AB1204216C4005CD925 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AAF204216C4005CD925 /* AppDelegate.swift */; };
+		D2144AB3204216CB005CD925 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AB2204216CB005CD925 /* AppFlowController.swift */; };
+		D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */; };
+		D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AB62042173F005CD925 /* RecipeFlowController.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
 		D21D3DCE2041D5C200EF97BC /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCD2041D5C200EF97BC /* ImageService.swift */; };
 		D21D3DD02041D5DC00EF97BC /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCF2041D5DC00EF97BC /* UIImageView+Extensions.swift */; };
-		D2261FBB204162D50072956E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261FB5204162D50072956E /* AppDelegate.swift */; };
 		D2261FC2204163AE0072956E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2261FBC204163AE0072956E /* Assets.xcassets */; };
 		D2261FC3204163AE0072956E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2261FBE204163AE0072956E /* LaunchScreen.storyboard */; };
 		D2261FCB204171690072956E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2261FCA204171690072956E /* Recipe.swift */; };
@@ -58,13 +61,16 @@
 		D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		D2144AA92042146D005CD925 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		D2144AAC204214D4005CD925 /* RecipeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeListViewController.swift; sourceTree = "<group>"; };
+		D2144AAF204216C4005CD925 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2144AB2204216CB005CD925 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		D2144AB62042173F005CD925 /* RecipeFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFlowController.swift; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		D21D3DCD2041D5C200EF97BC /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		D21D3DCF2041D5DC00EF97BC /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		D2261FAD204162D50072956E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2261FB5204162D50072956E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2261FBC204163AE0072956E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2261FBF204163AE0072956E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D2261FCA204171690072956E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -144,6 +150,23 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		D2144AAE204216C4005CD925 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D2144AAF204216C4005CD925 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D2144AB0204216C4005CD925 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				D2144AB2204216CB005CD925 /* AppFlowController.swift */,
+				D2144AB62042173F005CD925 /* RecipeFlowController.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		D2261FAC204162D50072956E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +182,6 @@
 			children = (
 				D2261FC920416C7B0072956E /* Feature */,
 				D2261FC520416C7B0072956E /* Library */,
-				D2261FB5204162D50072956E /* AppDelegate.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -175,6 +197,8 @@
 		D2261FC520416C7B0072956E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2144AAE204216C4005CD925 /* AppDelegate */,
+				D2144AB0204216C4005CD925 /* Flow */,
 				D2261FC620416C7B0072956E /* Extensions */,
 				D2261FC720416C7B0072956E /* Model */,
 				D2261FC820416C7B0072956E /* Service */,
@@ -188,6 +212,7 @@
 				D21D3DCF2041D5DC00EF97BC /* UIImageView+Extensions.swift */,
 				D2144AA1204212DD005CD925 /* UIColor+Extensions.swift */,
 				D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */,
+				D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -584,10 +609,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2144AB1204216C4005CD925 /* AppDelegate.swift in Sources */,
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
+				D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */,
+				D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */,
 				D2261FCB204171690072956E /* Recipe.swift in Sources */,
+				D2144AB3204216CB005CD925 /* AppFlowController.swift in Sources */,
 				D2144AAD204214D4005CD925 /* RecipeListViewController.swift in Sources */,
-				D2261FBB204162D50072956E /* AppDelegate.swift in Sources */,
 				D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */,
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,

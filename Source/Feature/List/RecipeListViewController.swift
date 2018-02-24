@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Show a list of recipes
 final class RecipeListViewController: UIViewController {
 
+  /// When a recipe get select
+  var select: ((Recipe) -> Void)?
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Show detail information for a recipe
 final class RecipeDetailViewController: UIViewController {
   private let recipe: Recipe
 
