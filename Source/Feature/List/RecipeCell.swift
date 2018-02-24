@@ -13,7 +13,7 @@ final class RecipeCell: UICollectionViewCell {
     let view = UIView()
     view.clipsToBounds = true
     view.layer.cornerRadius = 5
-    view.backgroundColor = UIColor(hex: "#9E6BE0").withAlphaComponent(0.6)
+    view.backgroundColor = Color.main.withAlphaComponent(0.4)
 
     return view
   }()

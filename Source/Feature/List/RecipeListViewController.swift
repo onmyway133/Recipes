@@ -48,7 +48,7 @@ final class RecipeListViewController: UIViewController {
     collectionView.dataSource = adapter
     collectionView.delegate = adapter
     collectionView.register(cellType: RecipeCell.self)
-    collectionView.backgroundColor = UIColor(hex: "#F4F4F4")
+    collectionView.backgroundColor = Color.background
     collectionView.contentInset.top = 8
 
     adapter.select = select
