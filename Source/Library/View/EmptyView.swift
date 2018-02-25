@@ -27,9 +27,10 @@ final class EmptyView: UIView {
 
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
       imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
-      imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+      imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
+      imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
 
       label.centerXAnchor.constraint(equalTo: centerXAnchor),
       label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10)
@@ -40,8 +41,9 @@ final class EmptyView: UIView {
 
   private func makeImageView() -> UIImageView {
     let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFit
+    imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
+    imageView.image = R.image.notFound()
     return imageView
   }
 
