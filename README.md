@@ -212,6 +212,24 @@ final class RecipeFlowController: UINavigationController {
 
 - The `UIViewController` can use `delegate` or `closure` to notify `FlowController` about changes or next screen in the flow. For `delegate` there may need for check when there are 2 instances of the same classes. Here we use `closure` for simplicity.
 
+### Auto Layout
+
+- I try to use Auto Layout as much as possible to make adaptive UI.
+- We can use libraries like [Anchors](https://github.com/onmyway133/Anchors) to do declarative and fast Auto Layout.
+- However in this app, we can just use `NSLayoutAnchor` since it is from iOS 9.
+- Inspired by [Constraint](https://github.com/hyperoslo/Sugar/blob/master/Sources/iOS/Constraint.swift)
+
+```swift
+extension NSLayoutConstraint {
+  static func activate(_ constraints: [NSLayoutConstraint]) {
+    constraints.forEach {
+      ($0.firstItem as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
+      $0.isActive = true
+    }
+  }
+}
+```
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
