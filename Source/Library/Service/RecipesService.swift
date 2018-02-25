@@ -10,10 +10,10 @@ import Foundation
 
 final class RecipesService {
   private let baseUrl = URL(string: "https://food2fork.com/api")!
-  private let networkService: NetworkService
+  private let networking: Networking
 
-  init(networkService: NetworkService) {
-    self.networkService = networkService
+  init(networking: Networking) {
+    self.networking = networking
   }
 
   /// Fetch recipes with highest rating
@@ -24,7 +24,7 @@ final class RecipesService {
       "key": AppConfig.apiKey
     ])
 
-    _ = networkService.fetch(resource: resource, completion: { data in
+    _ = networking.fetch(resource: resource, completion: { data in
       DispatchQueue.main.async {
         completion(data.flatMap({ RecipeListResponse.make(data: $0)?.recipes }) ?? [])
       }
@@ -42,7 +42,7 @@ final class RecipesService {
       "rId": recipeId
     ])
 
-    _ = networkService.fetch(resource: resource, completion: { data in
+    _ = networking.fetch(resource: resource, completion: { data in
       DispatchQueue.main.async {
         completion(data.flatMap({ RecipeResponse.make(data: $0)?.recipe }))
       }
@@ -61,7 +61,7 @@ final class RecipesService {
       "q": query
     ])
 
-    return networkService.fetch(resource: resource, completion: { data in
+    return networking.fetch(resource: resource, completion: { data in
       DispatchQueue.main.async {
         completion(data.flatMap({ RecipeListResponse.make(data: $0)?.recipes }) ?? [])
       }
