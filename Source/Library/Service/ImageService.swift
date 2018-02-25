@@ -37,7 +37,7 @@ class ImageService {
         }
       } else {
         // Try to request from network
-        let resource = NetworkService.Resource(url: url)
+        let resource = Resource(url: url)
         self?.task = self?.networkService.fetch(resource: resource, completion: { networkData in
           if let data = networkData, let image = UIImage(data: data) {
             // Save to cache

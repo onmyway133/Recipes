@@ -44,6 +44,8 @@
 		D2D5ED4220431B7B00BF46BC /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */; };
 		D2D5ED4820431FB900BF46BC /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4720431FB900BF46BC /* Debouncer.swift */; };
 		D2D5ED4B2043201F00BF46BC /* DebouncerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4A2043201F00BF46BC /* DebouncerTests.swift */; };
+		D2D5ED4E2043234000BF46BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4D2043234000BF46BC /* Networking.swift */; };
+		D2D5ED502043236E00BF46BC /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4F2043236E00BF46BC /* Resource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +115,8 @@
 		D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 		D2D5ED4720431FB900BF46BC /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		D2D5ED4A2043201F00BF46BC /* DebouncerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebouncerTests.swift; sourceTree = "<group>"; };
+		D2D5ED4D2043234000BF46BC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		D2D5ED4F2043236E00BF46BC /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +278,7 @@
 		D2261FC520416C7B0072956E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2D5ED4C2043233600BF46BC /* Networking */,
 				D2D5ED4620431FB900BF46BC /* Utils */,
 				D2D5ED3B2043140200BF46BC /* Constants */,
 				D2144ACB20422E8F005CD925 /* View */,
@@ -420,6 +425,15 @@
 				D2D5ED4A2043201F00BF46BC /* DebouncerTests.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		D2D5ED4C2043233600BF46BC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D2D5ED4D2043234000BF46BC /* Networking.swift */,
+				D2D5ED4F2043236E00BF46BC /* Resource.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,6 +763,7 @@
 				D2144ADD2042FD1E005CD925 /* HomeViewController.swift in Sources */,
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
 				D2144ADA2042FA12005CD925 /* SearchComponent.swift in Sources */,
+				D2D5ED502043236E00BF46BC /* Resource.swift in Sources */,
 				D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */,
 				D2144AC020421E4C005CD925 /* RecipeCell.swift in Sources */,
 				D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */,
@@ -772,6 +787,7 @@
 				D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */,
 				D2144AC8204226F6005CD925 /* UICollectionView+Extensions.swift in Sources */,
 				D2144AA2204212DD005CD925 /* UIColor+Extensions.swift in Sources */,
+				D2D5ED4E2043234000BF46BC /* Networking.swift in Sources */,
 				D2144ABE20421C16005CD925 /* Adapter.swift in Sources */,
 				D21D3DCE2041D5C200EF97BC /* ImageService.swift in Sources */,
 			);

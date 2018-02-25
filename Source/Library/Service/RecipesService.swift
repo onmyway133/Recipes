@@ -20,7 +20,7 @@ final class RecipesService {
   ///
   /// - Parameter completion: Called when operation finishes
   func fetchTopRating(completion: @escaping ([Recipe]) -> Void) {
-    let resource = NetworkService.Resource(url: baseUrl, path: "search", parameters: [
+    let resource = Resource(url: baseUrl, path: "search", parameters: [
       "key": AppConfig.apiKey
     ])
 
@@ -37,7 +37,7 @@ final class RecipesService {
   ///   - recipeId: The recipe id
   ///   - completion: Called when operation finishes
   func fetch(recipeId: String, completion: @escaping (Recipe?) -> Void) {
-    let resource = NetworkService.Resource(url: baseUrl, path: "get", parameters: [
+    let resource = Resource(url: baseUrl, path: "get", parameters: [
       "key": AppConfig.apiKey,
       "rId": recipeId
     ])
@@ -56,7 +56,7 @@ final class RecipesService {
   ///   - completion: Called when operation finishes
   /// - Returns: The network task
   @discardableResult func search(query: String, completion: @escaping ([Recipe]) -> Void) -> URLSessionTask? {
-    let resource = NetworkService.Resource(url: baseUrl, path: "search", parameters: [
+    let resource = Resource(url: baseUrl, path: "search", parameters: [
       "key": AppConfig.apiKey,
       "q": query
     ])

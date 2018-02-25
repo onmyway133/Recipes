@@ -9,36 +9,13 @@
 import Foundation
 
 /// Used to fetch data from network
-final class NetworkService {
-
-  // A network resource, identified by url and parameters
-  struct Resource {
-    let url: URL
-    let path: String?
-    let httpMethod: String
-    let parameters: [String: String]
-
-    init(url: URL, path: String? = nil, httpMethod: String = "GET", parameters: [String: String] = [:]) {
-      self.url = url
-      self.path = path
-      self.httpMethod = httpMethod
-      self.parameters = parameters
-    }
-  }
-
+final class NetworkService: Networking {
   private let session: URLSession
 
   init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
     self.session = URLSession(configuration: configuration)
   }
 
-  /// Fetch data from url and parameters query
-  ///
-  /// - Parameters:
-  ///   - url: The url
-  ///   - parameters: Parameters as query items
-  ///   - completion: Called when operation finishes
-  /// - Returns: The data task
   @discardableResult func fetch(resource: Resource, completion: @escaping (Data?) -> Void) -> URLSessionTask? {
     guard let request = makeRequest(resource: resource) else {
       completion(nil)
