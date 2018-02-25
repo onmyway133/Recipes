@@ -11,7 +11,6 @@ import SafariServices
 
 /// Manage list and detail screens for recipe
 final class RecipeFlowController: UINavigationController {
-
   /// Start the flow
   func start() {
     let service = RecipesService(networking: NetworkService())
