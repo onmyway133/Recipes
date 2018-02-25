@@ -25,6 +25,7 @@
 		D2144ACD20422EA5005CD925 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ACC20422EA5005CD925 /* ScrollableView.swift */; };
 		D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ACE20422EAE005CD925 /* BaseController.swift */; };
 		D2144AD120422ED5005CD925 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD020422ED5005CD925 /* RecipeDetailView.swift */; };
+		D2144AD32042F218005CD925 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD22042F218005CD925 /* UIView+Extensions.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -81,6 +82,7 @@
 		D2144ACC20422EA5005CD925 /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		D2144ACE20422EAE005CD925 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		D2144AD020422ED5005CD925 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		D2144AD22042F218005CD925 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				D2144AA320421328005CD925 /* NSLayoutConstraint+Extensions.swift */,
 				D2144AB4204216FC005CD925 /* UIViewController+Extensions.swift */,
 				D2144AC7204226F6005CD925 /* UICollectionView+Extensions.swift */,
+				D2144AD22042F218005CD925 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				D2144AC42042267A005CD925 /* AppDelegate.swift in Sources */,
 				D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */,
 				D2144AC620422686005CD925 /* AppConfig.swift in Sources */,
+				D2144AD32042F218005CD925 /* UIView+Extensions.swift in Sources */,
 				D2144ACA20422E19005CD925 /* Color.swift in Sources */,
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,
 				D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */,

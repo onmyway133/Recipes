@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 /// Manage list and detail screens for recipe
 final class RecipeFlowController: UINavigationController {
@@ -24,6 +25,20 @@ final class RecipeFlowController: UINavigationController {
   private func startDetail(recipe: Recipe) {
     let service = RecipesService(networkService: NetworkService())
     let controller = RecipeDetailViewController(recipe: recipe, recipesService: service)
+
+    controller.selectInstruction = { [weak self] url in
+      self?.startWeb(url: url)
+    }
+
+    controller.selectOriginal = { [weak self] url in
+      self?.startWeb(url: url)
+    }
+
+    pushViewController(controller, animated: true)
+  }
+
+  private func startWeb(url: URL) {
+    let controller = SFSafariViewController(url: url)
     pushViewController(controller, animated: true)
   }
 }

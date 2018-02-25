@@ -13,6 +13,9 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
   private let recipe: Recipe
   private let recipesService: RecipesService
 
+  var selectInstruction: ((URL) -> Void)?
+  var selectOriginal: ((URL) -> Void)?
+
   // MARK: - Init
 
   required init(recipe: Recipe, recipesService: RecipesService) {
@@ -32,8 +35,14 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
     super.viewDidLoad()
 
     view.backgroundColor = Color.background
+    setup()
     update(recipe: recipe)
     loadData()
+  }
+
+  private func setup() {
+    root.instructionButton.addTarget(self, action: #selector(instructionButtonTouched), for: .touchUpInside)
+    root.originalButton.addTarget(self, action: #selector(originalButtonTouched), for: .touchUpInside)
   }
 
   private func update(recipe: Recipe) {
@@ -55,6 +64,18 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
       )
     }
   }
+
+  // MARK: - Action
+
+  @objc private func instructionButtonTouched() {
+    selectInstruction?(recipe.sourceUrl)
+  }
+
+  @objc private func originalButtonTouched() {
+    selectOriginal?(recipe.publisherUrl)
+  }
+
+  // MARK: - Data
 
   private func loadData() {
     recipesService.fetch(recipeId: recipe.id, completion: { [weak self] recipe in

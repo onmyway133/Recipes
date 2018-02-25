@@ -12,6 +12,8 @@ final class RecipeDetailView: UIView {
   private let scrollableView = ScrollableView()
   private(set) lazy var imageView: UIImageView = self.makeImageView()
   private(set) lazy var ingredientLabel: UILabel = self.makeIngredientLabel()
+  private(set) lazy var instructionButton: UIButton = self.makeButton()
+  private(set) lazy var originalButton: UIButton = self.makeButton()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -26,6 +28,8 @@ final class RecipeDetailView: UIView {
   private func setupConstraints() {
     let ingredientHeaderView = HeaderView(text: "Ingredients")
     let infoHeaderView = HeaderView(text: "Info")
+    instructionButton.setTitle("View instructions", for: .normal)
+    originalButton.setTitle("View original", for: .normal)
 
     addSubview(scrollableView)
     NSLayoutConstraint.pin(view: scrollableView, toEdgesOf: self)
@@ -34,14 +38,19 @@ final class RecipeDetailView: UIView {
       ScrollableView.Pair(view: imageView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
       ScrollableView.Pair(view: ingredientHeaderView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
       ScrollableView.Pair(view: ingredientLabel, inset: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 0)),
-      ScrollableView.Pair(view: infoHeaderView, inset: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0))
+      ScrollableView.Pair(view: infoHeaderView, inset: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)),
+      ScrollableView.Pair(view: instructionButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20)),
+      ScrollableView.Pair(view: originalButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20))
     ])
 
     NSLayoutConstraint.activate([
       imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 9.0/16),
 
       ingredientHeaderView.heightAnchor.constraint(equalToConstant: 30),
-      infoHeaderView.heightAnchor.constraint(equalToConstant: 30)
+      infoHeaderView.heightAnchor.constraint(equalToConstant: 30),
+
+      instructionButton.heightAnchor.constraint(equalToConstant: 50),
+      originalButton.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
 
@@ -59,6 +68,16 @@ final class RecipeDetailView: UIView {
     label.numberOfLines = 0
     return label
   }
+
+  private func makeButton() -> UIButton {
+    let button = UIButton()
+    button.backgroundColor = Color.main
+    button.layer.cornerRadius = 10
+    button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+    button.setTitleColor(.darkGray, for: .highlighted)
+
+    return button
+  }
 }
 
 private class HeaderView: UIView {
@@ -68,7 +87,7 @@ private class HeaderView: UIView {
     super.init(frame: .zero)
     label.text = text
     addSubview(label)
-    backgroundColor = Color.main
+    backgroundColor = Color.main.withAlphaComponent(0.8)
 
     setupConstraints()
   }
