@@ -18,7 +18,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
 
   /// Avoid making lots of requests when user types fast
   /// This throttles the search requests
-  var throttleHandler: ThrottleHandler!
+  let debouncer = Debouncer(delay: 2)
 
   required init(recipesService: RecipesService) {
     self.recipesService = recipesService
@@ -29,10 +29,6 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     searchController.dimsBackgroundDuringPresentation = true
     searchController.hidesNavigationBarDuringPresentation = false
     searchController.searchBar.placeholder = "Search recipe"
-
-    throttleHandler = ThrottleHandler(delay: 2, action: { [weak self] in
-      self?.performSearch()
-    })
 
     recipeListViewController.view.addSubview(loadingIndicator)
     NSLayoutConstraint.activate([
@@ -62,7 +58,9 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   // MARK: - UISearchBarDelegate
 
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    throttleHandler.trigger()
+    debouncer.schedule { [weak self] in
+      self?.performSearch()
+    }
   }
 
   // MARK: - Logic

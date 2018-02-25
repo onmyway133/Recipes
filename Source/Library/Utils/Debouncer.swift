@@ -9,18 +9,16 @@
 import Foundation
 
 /// Throttle action, allow action to be performed after some delay
-final class ThrottleHandler {
+final class Debouncer {
   private let delay: TimeInterval
-  private let action: () -> Void
   private var workItem: DispatchWorkItem?
 
-  init(delay: TimeInterval, action: @escaping () -> Void) {
+  init(delay: TimeInterval) {
     self.delay = delay
-    self.action = action
   }
 
   /// Trigger the action after some delay
-  func trigger() {
+  func schedule(action: @escaping () -> Void) {
     workItem?.cancel()
     workItem = DispatchWorkItem(block: action)
     DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: workItem!)
