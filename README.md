@@ -30,9 +30,36 @@ Recipes App
 ### Project
 
 - Create new project, select both Unit Tests and UI Tests as we should write tests early.
-- Organising files
+- We can organise files by feature/module or role/types. Each has its pros and cons
+- By role/type:
+  - Pros: 
+    - Less thinking about where to put files.
+    - Easier to apply scripts or filter
+  - Cons:
+    - Hard to correlate if we want to find files related to same feature
+    - Take time to reorganise files if we want to make them into reusable components
+- By feature/module
+  - Pros:
+    - Make things modular
+    - Encourage composition
+  - Cons:
+    - May be messy when many files of different types stay close
+
+### Modular
+
+- It may depend on projects, but I usually group things by feature/module. It answers the question "What does this app do?" instead of "What is this file?".
 
   - Source: contains source code files, splitted into features
+    - Features: contain main features in the app
+      - Home: the home screen, showing a list of recipes and open search
+      - List: show a list of recipes, know how to reload and show empty view
+      - Search: handle search and debouncing
+      - Detail: show detail information
+    - Library
+      - Flow: contains FlowController to manage flows
+      - Adapater: Generic data source for `UICollectionView`
+      - Extension: convenient extensions for common operations
+      - Model: The model in the app, parsed from json
   - Resource: contains plist, resource, Storyboard files
 
 ![](Screenshots/Project.png)
