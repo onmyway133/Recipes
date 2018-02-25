@@ -21,4 +21,16 @@ class RecipesServiceTests: XCTestCase {
 
     wait(for: [expectation], timeout: 1)
   }
+
+  func testFetchSingleRecipe() {
+    let expectation = self.expectation(description: #function)
+    let mockNetworkService = MockNetworkService(fileName: "singleRecipe")
+    let recipesService = RecipesService(networking: mockNetworkService)
+    recipesService.fetch(recipeId: "", completion: { recipe in
+      XCTAssertEqual(recipe?.ingredients?.count, 5)
+      expectation.fulfill()
+    })
+
+    wait(for: [expectation], timeout: 1)
+  }
 }

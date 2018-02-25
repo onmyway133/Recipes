@@ -1,9 +1,19 @@
-//
-//  singleRecipe.json
-//  RecipesTests
-//
-//  Created by Khoa Pham on 25.02.2018.
-//  Copyright © 2018 Khoa Pham. All rights reserved.
-//
-
-import Foundation
+{
+	"recipe": {
+		"publisher": "My Baking Addiction",
+		"f2f_url": "http://food2fork.com/view/8061c3",
+		"ingredients": [
+			" cup plus 2 tablespoons granulated sugar",
+			"zest of one lemon",
+			"2 packages cream cheese, 8 oz each; room temperature",
+			"2 large eggs; room temperature",
+			" cup heavy cream"
+		],
+		"source_url": "http://www.mybakingaddiction.com/cheesecake-in-a-jar-recipe/",
+		"recipe_id": "8061c3",
+		"image_url": "http://static.food2fork.com/CheesecakeJars2Crop1of1eedb.jpg",
+		"social_rank": 100.0,
+		"publisher_url": "http://www.mybakingaddiction.com",
+		"title": "Virtual Picnic- Cheesecake in a Jar"
+	}
+}
