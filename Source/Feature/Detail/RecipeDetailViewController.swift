@@ -56,7 +56,7 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
         .joined(separator: "\n")
 
       UIView.transition(
-        with: root.ingredientLabel,
+        with: root,
         duration: 0.25,
         options: .transitionCrossDissolve,
         animations: {
