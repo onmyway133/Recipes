@@ -21,6 +21,9 @@ final class CacheService {
   /// For checking file or directory exists in a specified path
   private let fileManager: FileManager
 
+  /// Make sure all operation are executed serially
+  private let serialQueue = DispatchQueue(label: "Recipes")
+
   init(fileManager: FileManager = FileManager.default) {
     self.fileManager = fileManager
     do {
@@ -31,10 +34,7 @@ final class CacheService {
         create: true
       )
       diskPath = documentDirectory.appendingPathComponent("Recipes")
-
-      if !fileManager.fileExists(atPath: diskPath.path) {
-        try fileManager.createDirectory(at: diskPath, withIntermediateDirectories: false, attributes: nil)
-      }
+      try createDirectoryIfNeeded()
     } catch {
       fatalError()
     }
@@ -45,13 +45,14 @@ final class CacheService {
   /// - Parameters:
   ///   - data: The data to save
   ///   - key: Key to identify cached item
-  func save(data: Data, key: String) {
+  func save(data: Data, key: String, completion: (() -> Void)? = nil) {
     let key = MD5(key)
 
-    DispatchQueue.global().async {
+    serialQueue.async {
       self.memory.setObject(data as NSData, forKey: key as NSString)
       do {
         try data.write(to: self.filePath(key: key))
+        completion?()
       } catch {
         print(error)
       }
@@ -66,7 +67,7 @@ final class CacheService {
   func load(key: String, completion: @escaping (Data?) -> Void) {
     let key = MD5(key)
 
-    DispatchQueue.global().async {
+    serialQueue.async {
       // If object is in memory
       if let data = self.memory.object(forKey: key as NSString) {
         completion(data as Data)
@@ -91,5 +92,18 @@ final class CacheService {
   /// - Returns: The file url
   private func filePath(key: String) -> URL {
     return diskPath.appendingPathComponent(key)
+  }
+
+  private func createDirectoryIfNeeded() throws {
+    if !fileManager.fileExists(atPath: diskPath.path) {
+      try fileManager.createDirectory(at: diskPath, withIntermediateDirectories: false, attributes: nil)
+    }
+  }
+
+  /// Clear all items in memory and disk cache
+  func clear() throws {
+    memory.removeAllObjects()
+    try fileManager.removeItem(at: diskPath)
+    try createDirectoryIfNeeded()
   }
 }
