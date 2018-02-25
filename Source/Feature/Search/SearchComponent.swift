@@ -45,6 +45,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   func add(to viewController: UIViewController) {
     if #available(iOS 11, *) {
       viewController.navigationItem.searchController = searchController
+      viewController.navigationItem.hidesSearchBarWhenScrolling = false
     } else {
       viewController.navigationItem.titleView = searchController.searchBar
     }
