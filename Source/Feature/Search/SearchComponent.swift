@@ -14,6 +14,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   let searchController: UISearchController
   let recipeListViewController = RecipeListViewController()
   var task: URLSessionTask?
+  private lazy var loadingIndicator: UIActivityIndicatorView = self.makeLoadingIndicator()
 
   /// Avoid making lots of requests when user types fast
   /// This throttles the search requests
@@ -32,8 +33,15 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     throttleHandler = ThrottleHandler(delay: 2, action: { [weak self] in
       self?.performSearch()
     })
+
+    recipeListViewController.view.addSubview(loadingIndicator)
+    NSLayoutConstraint.activate([
+      loadingIndicator.centerXAnchor.constraint(equalTo: recipeListViewController.view.centerXAnchor),
+      loadingIndicator.centerYAnchor.constraint(equalTo: recipeListViewController.view.centerYAnchor, constant: -100)
+    ])
   }
 
+  /// Add search bar to view controller
   func add(to viewController: UIViewController) {
     if #available(iOS 11, *) {
       viewController.navigationItem.searchController = searchController
@@ -68,8 +76,19 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
 
   private func search(query: String) {
     task?.cancel()
+    loadingIndicator.startAnimating()
     task = recipesService.search(query: query, completion: { [weak self] recipes in
+      self?.loadingIndicator.stopAnimating()
       self?.recipeListViewController.handle(recipes: recipes)
     })
+  }
+
+  // MARK: - Make
+
+  private func makeLoadingIndicator() -> UIActivityIndicatorView {
+    let view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    view.color = .darkGray
+    view.hidesWhenStopped = true
+    return view
   }
 }
