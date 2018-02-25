@@ -429,8 +429,8 @@ final class MockNetworkService: Networking {
 
 ### Cache
 
-- We need memory and disk cache. Memory for fast access. Disk for persistency.
 - See [Cache](https://github.com/hyperoslo/Cache)
+- We need memory and disk cache. Memory for fast access. Disk for persistency.
 - When we save, we save to both memory and disk. When we load, if memory cache fails, we load from disk, then update memory again.
 - There are many advanced topics about cache like purging, expiry, access frequency, ...
 - Everything can be converted to `Data`, so we can just save `Data` to cache. Swift 4 Codable can serialize object to `Data`.
@@ -519,6 +519,94 @@ class CacheServiceTests: XCTestCase {
     })
 
     wait(for: [expectation], timeout: 1)
+  }
+}
+```
+
+### Remote Image
+
+- See [Imaginary](https://github.com/hyperoslo/Imaginary)
+- For remote image, we need to download and cache it. The cache key is the url of the remote image.
+- Prefer composition. Inject `NetworkService` and `CacheService` into `ImageService`
+
+```swift
+/// Check local cache and fetch remote image
+final class ImageService {
+
+  private let networkService: Networking
+  private let cacheService: CacheService
+  private var task: URLSessionTask?
+
+  init(networkService: Networking, cacheService: CacheService) {
+    self.networkService = networkService
+    self.cacheService = cacheService
+  }
+}
+```
+
+- We usually have have `UICollectionView, UITableView` cells with `UIImageView`. And since cells are reused, we need to cancel any existing `request task` before making new request
+
+```swift
+func fetch(url: URL, completion: @escaping (UIImage?) -> Void) {
+  // Cancel existing task if any
+  task?.cancel()
+
+  // Try load from cache
+  cacheService.load(key: url.absoluteString, completion: { [weak self] cachedData in
+    if let data = cachedData, let image = UIImage(data: data) {
+      DispatchQueue.main.async {
+        completion(image)
+      }
+    } else {
+      // Try to request from network
+      let resource = Resource(url: url)
+      self?.task = self?.networkService.fetch(resource: resource, completion: { networkData in
+        if let data = networkData, let image = UIImage(data: data) {
+          // Save to cache
+          self?.cacheService.save(data: data, key: url.absoluteString)
+          DispatchQueue.main.async {
+            completion(image)
+          }
+        } else {
+          print("Error loading image at \(url)")
+        }
+      })
+
+      self?.task?.resume()
+    }
+  })
+}
+```
+
+### UIImageView
+
+- Add extension to `UIImageView` to set remote image from url. I use `associated object` to keep this `ImageService` and to cancel old requests
+
+```swift
+extension UIImageView {
+  func setImage(url: URL, placeholder: UIImage? = nil) {
+    if imageService == nil {
+      imageService = ImageService(networkService: NetworkService(), cacheService: CacheService())
+    }
+
+    self.image = placeholder
+    self.imageService?.fetch(url: url, completion: { [weak self] image in
+      self?.image = image
+    })
+  }
+
+  private var imageService: ImageService? {
+    get {
+      return objc_getAssociatedObject(self, &AssociateKey.imageService) as? ImageService
+    }
+    set {
+      objc_setAssociatedObject(
+        self,
+        &AssociateKey.imageService,
+        newValue,
+        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
+      )
+    }
   }
 }
 ```

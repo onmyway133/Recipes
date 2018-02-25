@@ -9,13 +9,13 @@
 import UIKit
 
 /// Check local cache and fetch remote image
-class ImageService {
+final class ImageService {
 
-  private let networkService: NetworkService
+  private let networkService: Networking
   private let cacheService: CacheService
   private var task: URLSessionTask?
 
-  init(networkService: NetworkService, cacheService: CacheService) {
+  init(networkService: Networking, cacheService: CacheService) {
     self.networkService = networkService
     self.cacheService = cacheService
   }
