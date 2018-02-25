@@ -76,7 +76,6 @@ Recipes App
 - I find it useful to add documentations to classes and methods to briefly explain what they do
 - Press `Cmd+Alt+/` to generate documentation with `///`
 
-
 ### MARK
 
 - Using of `MARK` can be helpful to separate sections of code. It also groups functions nicely in Navigation Bar
@@ -100,6 +99,12 @@ Recipes App
 - There are both pros and cons in [checking in dependencies](https://guides.cocoapods.org/using/using-cocoapods#should-i-check-the-pods-directory-into-source-control) files (CocoaPods and Carthage). Here I choose to ignore them to not clutter the code base.
 
 > Whether or not you check in the Pods directory, the Podfile and Podfile.lock should always be kept under version control.
+
+### Dependencies
+
+- I make and contribute to [Open Source](https://github.com/onmyway133/blog/issues/5) a lot.
+- Using [framework](https://github.com/onmyway133/blog/issues/105) give you a [boost](https://github.com/onmyway133/blog/issues/85) at the start, but it also restricts you a lot in the future.
+- In this app, I try to use as few dependencies as possible
 
 ### Launch Screen
 
@@ -422,6 +427,101 @@ final class MockNetworkService: Networking {
 }
 ```
 
+### Cache
+
+- We need memory and disk cache. Memory for fast access. Disk for persistency.
+- See [Cache](https://github.com/hyperoslo/Cache)
+- When we save, we save to both memory and disk. When we load, if memory cache fails, we load from disk, then update memory again.
+- There are many advanced topics about cache like purging, expiry, access frequency, ...
+- Everything can be converted to `Data`, so we can just save `Data` to cache. Swift 4 Codable can serialize object to `Data`.
+
+
+```swift
+/// Save and load data to memory and disk cache
+final class CacheService {
+
+  /// For get or load data in memory
+  private let memory = NSCache<NSString, NSData>()
+
+  /// The path url that contain cached files (mp3 files and image files)
+  private let diskPath: URL
+
+  /// For checking file or directory exists in a specified path
+  private let fileManager: FileManager
+
+  /// Make sure all operation are executed serially
+  private let serialQueue = DispatchQueue(label: "Recipes")
+
+  init(fileManager: FileManager = FileManager.default) {
+    self.fileManager = fileManager
+    do {
+      let documentDirectory = try fileManager.url(
+        for: .documentDirectory,
+        in: .userDomainMask,
+        appropriateFor: nil,
+        create: true
+      )
+      diskPath = documentDirectory.appendingPathComponent("Recipes")
+      try createDirectoryIfNeeded()
+    } catch {
+      fatalError()
+    }
+  }
+
+  func save(data: Data, key: String, completion: (() -> Void)? = nil) {
+    let key = MD5(key)
+
+    serialQueue.async {
+      self.memory.setObject(data as NSData, forKey: key as NSString)
+      do {
+        try data.write(to: self.filePath(key: key))
+        completion?()
+      } catch {
+        print(error)
+      }
+    }
+  }
+}
+```
+
+- To avoid malformed and very long file name, we can hash them. I use MD5 from [SwiftHash](https://github.com/onmyway133/SwiftHash)
+
+```swift
+let key = MD5(key)
+```
+
+### Testing Cache
+
+- Since I design `Cache` operations to be async, we need to use `test expectation`
+- Remember to reset state before each test
+
+```swift
+class CacheServiceTests: XCTestCase {
+  let service = CacheService()
+
+  override func setUp() {
+    super.setUp()
+
+    try? service.clear()
+  }
+
+  func testClear() {
+    let expectation = self.expectation(description: #function)
+    let string = "Hello world"
+    let data = string.data(using: .utf8)!
+
+    service.save(data: data, key: "key", completion: {
+      try? self.service.clear()
+      self.service.load(key: "key", completion: {
+        XCTAssertNil($0)
+        expectation.fulfill()
+      })
+    })
+
+    wait(for: [expectation], timeout: 1)
+  }
+}
+```
 
 ## Credit
 
