@@ -40,6 +40,7 @@
 		D29C8B752041622A00F6DFC0 /* RecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C8B742041622A00F6DFC0 /* RecipesUITests.swift */; };
 		D2D14552204186B600B31280 /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D14551204186B600B31280 /* RecipeTests.swift */; };
 		D2D5ED3920430E7200BF46BC /* ThrottleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */; };
+		D2D5ED3D2043140200BF46BC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3C2043140200BF46BC /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		D29C8B762041622A00F6DFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2D14551204186B600B31280 /* RecipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
 		D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottleHandler.swift; sourceTree = "<group>"; };
+		D2D5ED3C2043140200BF46BC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 		D2261FC520416C7B0072956E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2D5ED3B2043140200BF46BC /* Constants */,
 				D2144ACB20422E8F005CD925 /* View */,
 				D2144AC22042267A005CD925 /* App */,
 				D2144AC120421FD9005CD925 /* Base */,
@@ -378,6 +381,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D2D5ED3B2043140200BF46BC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D2D5ED3C2043140200BF46BC /* R.generated.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +397,7 @@
 			buildConfigurationList = D29C8B792041622A00F6DFC0 /* Build configuration list for PBXNativeTarget "Recipes" */;
 			buildPhases = (
 				3ACF734DB59FDA177E1AF598 /* [CP] Check Pods Manifest.lock */,
+				D2D5ED3A204313D800BF46BC /* R.swift */,
 				D29C8B4D2041622900F6DFC0 /* Sources */,
 				D29C8B4E2041622900F6DFC0 /* Frameworks */,
 				D29C8B4F2041622900F6DFC0 /* Resources */,
@@ -660,6 +672,20 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		D2D5ED3A204313D800BF46BC /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Source/Library/Constants\"";
+		};
 		D3627BD33A06E5114D95C50A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -707,6 +733,7 @@
 				D2144ACA20422E19005CD925 /* Color.swift in Sources */,
 				D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */,
 				D2144AAA2042146D005CD925 /* RecipeDetailViewController.swift in Sources */,
+				D2D5ED3D2043140200BF46BC /* R.generated.swift in Sources */,
 				D21D3DD02041D5DC00EF97BC /* UIImageView+Extensions.swift in Sources */,
 				D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */,
 				D2144AC8204226F6005CD925 /* UICollectionView+Extensions.swift in Sources */,
