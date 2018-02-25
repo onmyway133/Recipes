@@ -40,4 +40,9 @@ final class RecipeListViewController: UIViewController {
     view.addSubview(collectionView)
     NSLayoutConstraint.pin(view: collectionView, toEdgesOf: view)
   }
+
+  func handle(recipes: [Recipe]) {
+    adapter.items = recipes
+    collectionView.reloadData()
+  }
 }

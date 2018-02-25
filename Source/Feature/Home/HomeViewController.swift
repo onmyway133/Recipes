@@ -16,13 +16,14 @@ final class HomeViewController: UIViewController {
 
   private var refreshControl = UIRefreshControl()
   private let recipesService: RecipesService
-  private let searchComponent = SearchComponent()
+  private let searchComponent: SearchComponent
   private let recipeListViewController = RecipeListViewController()
 
   // MARK: - Init
 
   required init(recipesService: RecipesService) {
     self.recipesService = recipesService
+    self.searchComponent = SearchComponent(recipesService: recipesService)
     super.init(nibName: nil, bundle: nil)
     self.title = "Recipes"
   }
@@ -55,8 +56,7 @@ final class HomeViewController: UIViewController {
   private func loadData() {
     refreshControl.beginRefreshing()
     recipesService.fetchTopRating(completion: { [weak self] recipes in
-      self?.recipeListViewController.adapter.items = recipes
-      self?.recipeListViewController.collectionView.reloadData()
+      self?.recipeListViewController.handle(recipes: recipes)
       self?.refreshControl.endRefreshing()
     })
   }

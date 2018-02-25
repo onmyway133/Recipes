@@ -10,10 +10,14 @@ import UIKit
 
 /// A reusable component to add search functionality via search bar
 final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDelegate {
+  let recipesService: RecipesService
   let searchController: UISearchController
+  let recipeListViewController = RecipeListViewController()
+  var task: URLSessionTask?
 
-  override init() {
-    self.searchController = UISearchController(searchResultsController: UIViewController())
+  required init(recipesService: RecipesService) {
+    self.recipesService = recipesService
+    self.searchController = UISearchController(searchResultsController: recipeListViewController)
     super.init()
     searchController.searchResultsUpdater = self
     searchController.searchBar.delegate = self
@@ -37,6 +41,15 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   // MARK: - UISearchBarDelegate
 
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    print(searchText)
+    search(query: searchText)
+  }
+
+  // MARK: - Logic
+
+  private func search(query: String) {
+    task?.cancel()
+    task = recipesService.search(query: query, completion: { [weak self] recipes in
+      self?.recipeListViewController.handle(recipes: recipes)
+    })
   }
 }
