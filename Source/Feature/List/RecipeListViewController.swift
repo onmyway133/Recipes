@@ -10,27 +10,8 @@ import UIKit
 
 /// Show a list of recipes
 final class RecipeListViewController: UIViewController {
-
-  /// When a recipe get select
-  var select: ((Recipe) -> Void)?
-
-  private var collectionView: UICollectionView!
-  private var refreshControl = UIRefreshControl()
-  private let adapter = Adapter<Recipe, RecipeCell>()
-  private let recipesService: RecipesService
-  private let searchComponent = SearchComponent()
-
-  // MARK: - Init
-
-  required init(recipesService: RecipesService) {
-    self.recipesService = recipesService
-    super.init(nibName: nil, bundle: nil)
-    self.title = "Recipes"
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError()
-  }
+  private(set) var collectionView: UICollectionView!
+  let adapter = Adapter<Recipe, RecipeCell>()
 
   // MARK: - Life Cycle
 
@@ -38,8 +19,6 @@ final class RecipeListViewController: UIViewController {
     super.viewDidLoad()
 
     setup()
-    setupSearch()
-    loadData()
   }
 
   private func setup() {
@@ -53,7 +32,6 @@ final class RecipeListViewController: UIViewController {
     collectionView.backgroundColor = Color.background
     collectionView.contentInset.top = 8
 
-    adapter.select = select
     adapter.configure = { recipe, cell in
       cell.imageView.setImage(url: recipe.imageUrl)
       cell.label.text = recipe.title
@@ -61,25 +39,5 @@ final class RecipeListViewController: UIViewController {
 
     view.addSubview(collectionView)
     NSLayoutConstraint.pin(view: collectionView, toEdgesOf: view)
-
-    collectionView.addSubview(refreshControl)
-    refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-  }
-
-  @objc private func refresh() {
-    loadData()
-  }
-
-  private func loadData() {
-    refreshControl.beginRefreshing()
-    recipesService.fetchTopRating(completion: { [weak self] recipes in
-      self?.adapter.items = recipes
-      self?.collectionView.reloadData()
-      self?.refreshControl.endRefreshing()
-    })
-  }
-
-  private func setupSearch() {
-    searchComponent.add(to: self)
   }
 }
