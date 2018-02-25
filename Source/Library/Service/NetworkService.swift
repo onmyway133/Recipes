@@ -14,11 +14,11 @@ final class NetworkService {
   // A network resource, identified by url and parameters
   struct Resource {
     let url: URL
-    let path: String
+    let path: String?
     let httpMethod: String
     let parameters: [String: String]
 
-    init(url: URL, path: String = "", httpMethod: String = "GET", parameters: [String: String] = [:]) {
+    init(url: URL, path: String? = nil, httpMethod: String = "GET", parameters: [String: String] = [:]) {
       self.url = url
       self.path = path
       self.httpMethod = httpMethod
@@ -64,7 +64,7 @@ final class NetworkService {
   ///   - resource: Network resource
   /// - Returns: Constructed URL request
   private func makeRequest(resource: Resource) -> URLRequest? {
-    let url = resource.url.appendingPathComponent(resource.path)
+    let url = resource.path.map({ resource.url.appendingPathComponent($0) }) ?? resource.url
     guard var component = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
       assertionFailure()
       return nil
