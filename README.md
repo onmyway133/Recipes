@@ -4,14 +4,28 @@ Recipes App
 ## Description
 
 - An app that showcases many recipes together with their detail information
+- Contain lots of good practices for structuring iOS app and handle dependencies
 - Support iOS 9+
 - Use Xcode 9.3, Swift 4.0
-- Use data from http://food2fork.com/about/api
-- Good practices for structuring iOS app and handle dependencies
-- I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture) and how to structure code in a better way. Each may be suitable for certain types of application. In this project, I use good old MVC because it's simple and does the job.
-- Avoid unnecessary dependencies
-- Embrace functional programming
-- Ideas are from my experience and learnings from community. Pull requests are more than welcome ❤️
+- Ideas are from my experience and learnings from colleagues, community. Pull requests are more than welcome ❤️
+
+<div align="center">
+<img src="Screenshots/Home.png" height="500" />
+<img src="Screenshots/Detail.png" height="500" />
+</div>
+
+### Minimum supported iOS version
+
+- As of early 2018, the latest version is iOS 11
+- See measurements about iOS adoption on [AppStore](https://developer.apple.com/support/app-store/)
+- Apple suggests supporting 2 latest versions
+- Supporting iOS 9 is not a pain for this app, it's good to have since there's quite a few percentage of users according to the chart below.
+- Ideally, to determine when to drop support old iOS versions, we need analytics about how users use our app.
+
+<div align="center">
+<img src="Screenshots/AppStore.png" height="500" />
+</div>
+
 
 ### Project
 
