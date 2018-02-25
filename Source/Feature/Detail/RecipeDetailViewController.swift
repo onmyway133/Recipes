@@ -30,5 +30,7 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
     super.viewDidLoad()
 
     view.backgroundColor = .white
+
+    root.imageView.setImage(url: recipe.imageUrl)
   }
 }
