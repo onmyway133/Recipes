@@ -42,6 +42,7 @@
 		D2D5ED3920430E7200BF46BC /* ThrottleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */; };
 		D2D5ED3D2043140200BF46BC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3C2043140200BF46BC /* R.generated.swift */; };
 		D2D5ED3F2043178800BF46BC /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3E2043178800BF46BC /* EmptyView.swift */; };
+		D2D5ED4220431B7B00BF46BC /* CacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottleHandler.swift; sourceTree = "<group>"; };
 		D2D5ED3C2043140200BF46BC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D2D5ED3E2043178800BF46BC /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 		D2D5ED4020431A5A00BF46BC /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D5ED4220431B7B00BF46BC /* CacheServiceTests.swift in Sources */,
 				D2D14552204186B600B31280 /* RecipeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
