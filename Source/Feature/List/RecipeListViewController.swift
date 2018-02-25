@@ -18,6 +18,7 @@ final class RecipeListViewController: UIViewController {
   private var refreshControl = UIRefreshControl()
   private let adapter = Adapter<Recipe, RecipeCell>()
   private let recipesService: RecipesService
+  private let searchComponent = SearchComponent()
 
   // MARK: - Init
 
@@ -37,6 +38,7 @@ final class RecipeListViewController: UIViewController {
     super.viewDidLoad()
 
     setup()
+    setupSearch()
     loadData()
   }
 
@@ -75,5 +77,9 @@ final class RecipeListViewController: UIViewController {
       self?.collectionView.reloadData()
       self?.refreshControl.endRefreshing()
     })
+  }
+
+  private func setupSearch() {
+    searchComponent.add(to: self)
   }
 }

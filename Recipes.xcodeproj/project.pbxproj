@@ -26,6 +26,7 @@
 		D2144ACF20422EAE005CD925 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144ACE20422EAE005CD925 /* BaseController.swift */; };
 		D2144AD120422ED5005CD925 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD020422ED5005CD925 /* RecipeDetailView.swift */; };
 		D2144AD32042F218005CD925 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD22042F218005CD925 /* UIView+Extensions.swift */; };
+		D2144ADA2042FA12005CD925 /* SearchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2144AD92042FA12005CD925 /* SearchComponent.swift */; };
 		D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC72041C22F00EF97BC /* NetworkService.swift */; };
 		D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DC92041CD4600EF97BC /* RecipesService.swift */; };
 		D21D3DCC2041D59B00EF97BC /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D3DCB2041D59B00EF97BC /* CacheService.swift */; };
@@ -83,6 +84,7 @@
 		D2144ACE20422EAE005CD925 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		D2144AD020422ED5005CD925 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		D2144AD22042F218005CD925 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		D2144AD92042FA12005CD925 /* SearchComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComponent.swift; sourceTree = "<group>"; };
 		D21D3DC72041C22F00EF97BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D21D3DC92041CD4600EF97BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
 		D21D3DCB2041D59B00EF97BC /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D2144AD82042F9E1005CD925 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D2144AD92042FA12005CD925 /* SearchComponent.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		D2261FAC204162D50072956E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +300,7 @@
 		D2261FC920416C7B0072956E /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D2144AD82042F9E1005CD925 /* Search */,
 				D2144AAB204214D4005CD925 /* List */,
 				D2144AA62042138D005CD925 /* Detail */,
 			);
@@ -661,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D3DCA2041CD4600EF97BC /* RecipesService.swift in Sources */,
+				D2144ADA2042FA12005CD925 /* SearchComponent.swift in Sources */,
 				D2144AB5204216FC005CD925 /* UIViewController+Extensions.swift in Sources */,
 				D2144AC020421E4C005CD925 /* RecipeCell.swift in Sources */,
 				D2144AB72042173F005CD925 /* RecipeFlowController.swift in Sources */,
