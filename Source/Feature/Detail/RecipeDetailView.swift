@@ -31,17 +31,17 @@ final class RecipeDetailView: UIView {
     NSLayoutConstraint.pin(view: scrollableView, toEdgesOf: self)
 
     scrollableView.setup(pairs: [
-      ScrollableView.Pair(view: imageView, inset: .zero),
-      ScrollableView.Pair(view: ingredientHeaderView, inset: .zero),
-      ScrollableView.Pair(view: ingredientLabel, inset: .zero),
-      ScrollableView.Pair(view: infoHeaderView, inset: .zero)
+      ScrollableView.Pair(view: imageView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
+      ScrollableView.Pair(view: ingredientHeaderView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
+      ScrollableView.Pair(view: ingredientLabel, inset: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 0)),
+      ScrollableView.Pair(view: infoHeaderView, inset: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0))
     ])
 
     NSLayoutConstraint.activate([
       imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 9.0/16),
 
       ingredientHeaderView.heightAnchor.constraint(equalToConstant: 30),
-      infoHeaderView.heightAnchor.constraint(equalToConstant: 50)
+      infoHeaderView.heightAnchor.constraint(equalToConstant: 30)
     ])
   }
 
@@ -62,7 +62,7 @@ final class RecipeDetailView: UIView {
 }
 
 private class HeaderView: UIView {
-  private(set) lazy var label: UILabel = UILabel()
+  private(set) lazy var label: UILabel = self.makeLabel()
 
   required init(text: String) {
     super.init(frame: .zero)
@@ -75,6 +75,14 @@ private class HeaderView: UIView {
 
   required init?(coder aDecoder: NSCoder) {
     fatalError()
+  }
+
+  // MARK: - Make
+
+  private func makeLabel() -> UILabel {
+    let label = UILabel()
+    label.font = UIFont.preferredFont(forTextStyle: .headline)
+    return label
   }
 
   private func setupConstraints() {

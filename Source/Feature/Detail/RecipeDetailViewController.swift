@@ -40,7 +40,19 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
     root.imageView.setImage(url: recipe.imageUrl)
 
     if let ingredients = recipe.ingredients {
-      root.ingredientLabel.text = ingredients.joined(separator: "\n")
+      let text = ingredients
+        .map(({ "🍭 \($0)" }))
+        .joined(separator: "\n")
+
+      UIView.transition(
+        with: root.ingredientLabel,
+        duration: 0.25,
+        options: .transitionCrossDissolve,
+        animations: {
+          self.root.ingredientLabel.text = text
+        },
+        completion: nil
+      )
     }
   }
 
