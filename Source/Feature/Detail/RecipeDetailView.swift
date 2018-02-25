@@ -14,6 +14,7 @@ final class RecipeDetailView: UIView {
   private(set) lazy var ingredientLabel: UILabel = self.makeIngredientLabel()
   private(set) lazy var instructionButton: UIButton = self.makeButton()
   private(set) lazy var originalButton: UIButton = self.makeButton()
+  private(set) lazy var infoView: InfoView = InfoView()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -40,7 +41,8 @@ final class RecipeDetailView: UIView {
       ScrollableView.Pair(view: ingredientLabel, inset: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 0)),
       ScrollableView.Pair(view: infoHeaderView, inset: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)),
       ScrollableView.Pair(view: instructionButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20)),
-      ScrollableView.Pair(view: originalButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20))
+      ScrollableView.Pair(view: originalButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20)),
+      ScrollableView.Pair(view: infoView, inset: UIEdgeInsets(top: 16, left: 0, bottom: 20, right: 0))
     ])
 
     NSLayoutConstraint.activate([
@@ -80,7 +82,7 @@ final class RecipeDetailView: UIView {
   }
 }
 
-private class HeaderView: UIView {
+private final class HeaderView: UIView {
   private(set) lazy var label: UILabel = self.makeLabel()
 
   required init(text: String) {
@@ -108,6 +110,42 @@ private class HeaderView: UIView {
     NSLayoutConstraint.activate([
       label.centerYAnchor.constraint(equalTo: centerYAnchor),
       label.leftAnchor.constraint(equalTo: leftAnchor, constant: 8)
+    ])
+  }
+}
+
+final class InfoView: UIView {
+  private(set) lazy var leftLabel: UILabel = self.makeLabel()
+  private(set) lazy var rightLabel: UILabel = self.makeLabel()
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+
+    addSubviews([leftLabel, rightLabel])
+    rightLabel.textAlignment = .right
+    setupConstraints()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError()
+  }
+
+  // MARK: - Make
+
+  private func makeLabel() -> UILabel {
+    let label = UILabel()
+    label.font = UIFont.preferredFont(forTextStyle: .footnote)
+
+    return label
+  }
+
+  private func setupConstraints() {
+    NSLayoutConstraint.activate([
+      leftLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 8),
+      rightLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
+
+      leftLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+      rightLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])
   }
 }

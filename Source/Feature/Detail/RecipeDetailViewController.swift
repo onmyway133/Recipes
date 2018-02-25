@@ -47,6 +47,8 @@ final class RecipeDetailViewController: BaseController<RecipeDetailView> {
 
   private func update(recipe: Recipe) {
     root.imageView.setImage(url: recipe.imageUrl)
+    root.infoView.leftLabel.text = recipe.publisher
+    root.infoView.rightLabel.text = "Social rank: \(Int(recipe.socialRank))"
 
     if let ingredients = recipe.ingredients {
       let text = ingredients
