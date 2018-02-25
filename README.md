@@ -70,6 +70,26 @@ Recipes App
 - Use consistent and easy-to-reason indentation [Indenting Swift code](https://github.com/onmyway133/blog/issues/93)
 - Prefer camelCase [Using camelCase for abbreviations](https://github.com/onmyway133/blog/issues/147)
 
+### Documentation
+
+- Good code explains itself.
+- I find it useful to add documentations to classes and methods to briefly explain what they do
+- Press `Cmd+Alt+/` to generate documentation with `///`
+
+
+### MARK
+
+- Using of `MARK` can be helpful to separate sections of code. You can also use `extension` groups related properties, methods
+- For `UIViewController` we possibly have
+
+```
+// MARK: - Init
+// MARK: - View life cycle
+// MARK: - Setup
+// MARK: - Action
+// MARK: - Data
+```
+
 ### Git
 
 - Use `.gitignore` file from https://www.gitignore.io/api/swift
@@ -115,12 +135,6 @@ Human Interface Guidelines - App Icon](https://developer.apple.com/ios/human-int
 - Add new Run Script Phrase to execute `swiftlint` after compiling
 
 ![](Screenshots/SwiftLint.png)
-
-### Documentation
-
-- Good code explains itself.
-- I find it useful to add documentations to classes and methods to briefly explain what they do
-- Press `Cmd+Alt+/` to generate documentation with `///`
 
 ### Model
 
