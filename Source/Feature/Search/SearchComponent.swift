@@ -51,7 +51,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
 
   private func search(query: String) {
     task?.cancel()
-    task = recipesService.search(query: query, completion: { [weak self] recipes in
+    task = recipesService.search(query: "perfect iced coffee", completion: { [weak self] recipes in
       self?.recipeListViewController.handle(recipes: recipes)
     })
   }

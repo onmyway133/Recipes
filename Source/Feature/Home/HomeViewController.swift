@@ -63,5 +63,6 @@ final class HomeViewController: UIViewController {
 
   private func setupSearch() {
     searchComponent.add(to: self)
+    searchComponent.recipeListViewController.adapter.select = select
   }
 }
