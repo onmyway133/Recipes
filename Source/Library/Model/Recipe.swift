@@ -26,6 +26,8 @@ struct Recipe: Codable {
   /// Base url of the publisher
   let publisherUrl: URL
 
+  let ingredients: [String]?
+
   enum CodingKeys: String, CodingKey {
     case publisher
     case url = "f2f_url"
@@ -35,5 +37,6 @@ struct Recipe: Codable {
     case imageUrl = "image_url"
     case socialRank = "social_rank"
     case publisherUrl = "publisher_url"
+    case ingredients
   }
 }

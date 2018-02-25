@@ -22,7 +22,8 @@ final class RecipeFlowController: UINavigationController {
   }
 
   private func startDetail(recipe: Recipe) {
-    let controller = RecipeDetailViewController(recipe: recipe)
+    let service = RecipesService(networkService: NetworkService())
+    let controller = RecipeDetailViewController(recipe: recipe, recipesService: service)
     pushViewController(controller, animated: true)
   }
 }
