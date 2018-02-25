@@ -46,6 +46,10 @@
 		D2D5ED4B2043201F00BF46BC /* DebouncerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4A2043201F00BF46BC /* DebouncerTests.swift */; };
 		D2D5ED4E2043234000BF46BC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4D2043234000BF46BC /* Networking.swift */; };
 		D2D5ED502043236E00BF46BC /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED4F2043236E00BF46BC /* Resource.swift */; };
+		D2D5ED522043241C00BF46BC /* RecipesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED512043241C00BF46BC /* RecipesService.swift */; };
+		D2D5ED562043244900BF46BC /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = D2D5ED552043244900BF46BC /* recipes.json */; };
+		D2D5ED582043245E00BF46BC /* singleRecipe.json in Resources */ = {isa = PBXBuildFile; fileRef = D2D5ED572043245E00BF46BC /* singleRecipe.json */; };
+		D2D5ED5A2043246700BF46BC /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED592043246700BF46BC /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +121,10 @@
 		D2D5ED4A2043201F00BF46BC /* DebouncerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebouncerTests.swift; sourceTree = "<group>"; };
 		D2D5ED4D2043234000BF46BC /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		D2D5ED4F2043236E00BF46BC /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		D2D5ED512043241C00BF46BC /* RecipesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesService.swift; sourceTree = "<group>"; };
+		D2D5ED552043244900BF46BC /* recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
+		D2D5ED572043245E00BF46BC /* singleRecipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = singleRecipe.json; sourceTree = "<group>"; };
+		D2D5ED592043246700BF46BC /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +370,8 @@
 		D29C8B682041622900F6DFC0 /* RecipesTests */ = {
 			isa = PBXGroup;
 			children = (
+				D2D5ED542043243D00BF46BC /* Fixture */,
+				D2D5ED532043243D00BF46BC /* Mock */,
 				D2D1454F204186AB00B31280 /* Library */,
 				D29C8B6B2041622A00F6DFC0 /* Info.plist */,
 			);
@@ -407,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				D2D5ED4120431B7B00BF46BC /* CacheServiceTests.swift */,
+				D2D5ED512043241C00BF46BC /* RecipesService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -434,6 +445,23 @@
 				D2D5ED4F2043236E00BF46BC /* Resource.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		D2D5ED532043243D00BF46BC /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D2D5ED592043246700BF46BC /* MockNetworkService.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		D2D5ED542043243D00BF46BC /* Fixture */ = {
+			isa = PBXGroup;
+			children = (
+				D2D5ED552043244900BF46BC /* recipes.json */,
+				D2D5ED572043245E00BF46BC /* singleRecipe.json */,
+			);
+			path = Fixture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,6 +591,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D5ED562043244900BF46BC /* recipes.json in Resources */,
+				D2D5ED582043245E00BF46BC /* singleRecipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,7 +829,9 @@
 			files = (
 				D2D5ED4220431B7B00BF46BC /* CacheServiceTests.swift in Sources */,
 				D2D14552204186B600B31280 /* RecipeTests.swift in Sources */,
+				D2D5ED5A2043246700BF46BC /* MockNetworkService.swift in Sources */,
 				D2D5ED4B2043201F00BF46BC /* DebouncerTests.swift in Sources */,
+				D2D5ED522043241C00BF46BC /* RecipesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
