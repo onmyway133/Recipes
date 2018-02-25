@@ -32,7 +32,7 @@ final class HomeViewController: UIViewController {
     fatalError()
   }
 
-  // MARK: - Life Cycle
+  // MARK: - View life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,6 +42,8 @@ final class HomeViewController: UIViewController {
     loadData()
   }
 
+  // MARK: - Setup
+
   private func setup() {
     recipeListViewController.adapter.select = select
     add(childViewController: recipeListViewController)
@@ -49,9 +51,18 @@ final class HomeViewController: UIViewController {
     refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
   }
 
+  private func setupSearch() {
+    searchComponent.add(to: self)
+    searchComponent.recipeListViewController.adapter.select = select
+  }
+
+  // MARK: - Action
+
   @objc private func refresh() {
     loadData()
   }
+
+  // MARK: - Data
 
   private func loadData() {
     refreshControl.beginRefreshing()
@@ -59,10 +70,5 @@ final class HomeViewController: UIViewController {
       self?.recipeListViewController.handle(recipes: recipes)
       self?.refreshControl.endRefreshing()
     })
-  }
-
-  private func setupSearch() {
-    searchComponent.add(to: self)
-    searchComponent.recipeListViewController.adapter.select = select
   }
 }

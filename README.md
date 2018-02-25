@@ -79,7 +79,11 @@ Recipes App
 
 ### MARK
 
-- Using of `MARK` can be helpful to separate sections of code. You can also use `extension` groups related properties, methods
+- Using of `MARK` can be helpful to separate sections of code. It also groups functions nicely in Navigation Bar
+
+![](Screenshots/MARK.png)
+
+- You can also use `extension` groups related properties, methods
 - For `UIViewController` we possibly have
 
 ```
