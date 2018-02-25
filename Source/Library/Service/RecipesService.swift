@@ -56,7 +56,7 @@ final class RecipesService {
   ///   - completion: Called when operation finishes
   /// - Returns: The network task
   @discardableResult func search(query: String, completion: @escaping ([Recipe]) -> Void) -> URLSessionTask? {
-    let resource = NetworkService.Resource(url: baseUrl, path: "get", parameters: [
+    let resource = NetworkService.Resource(url: baseUrl, path: "search", parameters: [
       "key": AppConfig.apiKey,
       "q": query
     ])

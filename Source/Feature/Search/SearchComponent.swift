@@ -22,6 +22,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     searchController.searchResultsUpdater = self
     searchController.searchBar.delegate = self
     searchController.dimsBackgroundDuringPresentation = true
+    searchController.hidesNavigationBarDuringPresentation = false
   }
 
   func add(to viewController: UIViewController) {
@@ -30,6 +31,8 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     } else {
       viewController.navigationItem.titleView = searchController.searchBar
     }
+
+    viewController.definesPresentationContext = true
   }
 
   // MARK: - UISearchResultsUpdating
