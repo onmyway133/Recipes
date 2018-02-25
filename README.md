@@ -254,6 +254,23 @@ extension NSLayoutConstraint {
 }
 ```
 
+### Architecture
+
+- I'm a fan of exploring [architectures](https://github.com/onmyway133/fantastic-ios-architecture)
+- All architectures, patterns define roles for each objects, and how to connect them.
+- Remember these principles
+  - Encapsuate what varies
+  - Favor composition over inheritance
+  - Program to interface, not to implementation
+
+### Massive View Controller
+
+- There is no massive view controller, it's just us writing bad code. However there are ways to [slim](http://khanlou.com/2014/09/8-patterns-to-help-you-destroy-massive-view-controller/) it down.
+- In this app. I use
+  - Service: injected into view controller to perform a single task
+  - Generic View: move view and controls declaration to View layer
+  - Child view controller: Compose child view controllers to build more features
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
