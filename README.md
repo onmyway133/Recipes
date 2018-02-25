@@ -294,6 +294,43 @@ final class RecipeDetailView: UIView {
 }
 ```
 
+### Lazy properties
+
+- For properties that can be accessed at a later time, we can declare them as `lazy`
+- We can use `closure` for fast construction
+
+```swift
+final class RecipeCell: UICollectionViewCell {
+  private(set) lazy var containerView: UIView = {
+    let view = UIView()
+    view.clipsToBounds = true
+    view.layer.cornerRadius = 5
+    view.backgroundColor = Color.main.withAlphaComponent(0.4)
+
+    return view
+  }()
+}
+```
+
+- We can use `make` functions if we plan to reuse the same function for multiple properties. 
+
+```swift
+final class RecipeDetailView: UIView {
+  private(set) lazy var imageView: UIImageView = self.makeImageView()
+
+  private func makeImageView() -> UIImageView {
+    let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFill
+    imageView.clipsToBounds = true
+    return imageView
+  }
+}
+```
+
+- Read [Strive for Fluent Usage](https://swift.org/documentation/api-design-guidelines/)
+
+> Begin names of factory methods with “make”, e.g. x.makeIterator().
+
 
 ## Credit
 
