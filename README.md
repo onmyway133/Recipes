@@ -271,6 +271,30 @@ extension NSLayoutConstraint {
   - Generic View: move view and controls declaration to View layer
   - Child view controller: Compose child view controllers to build more features
 
+### Access Control
+
+- From [Access Control](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html)
+
+> Access control restricts access to parts of your code from code in other source files and modules. This feature enables you to hide the implementation details of your code, and to specify a preferred interface through which that code can be accessed and used.
+
+- Everything should be `private` and `final` by default. This also helps the [compiler](https://developer.apple.com/swift/blog/?id=27).
+- When seeing a public property, we need to search for it across project before doing further with it. If the property is used only within a `class`, making it `private` means we don't need to care if it breaks elsewhere.
+- Declare as many `final` as possible
+
+```swift
+final class HomeViewController: UIViewController {}
+```
+
+- Declare properties as `private` or at least `private(set)`
+
+```swift
+final class RecipeDetailView: UIView {
+  private let scrollableView = ScrollableView()
+  private(set) lazy var imageView: UIImageView = self.makeImageView()
+}
+```
+
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
