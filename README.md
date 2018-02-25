@@ -116,6 +116,12 @@ Human Interface Guidelines - App Icon](https://developer.apple.com/ios/human-int
 
 ![](Screenshots/SwiftLint.png)
 
+### Documentation
+
+- Good code explains itself.
+- I find it useful to add documentations to classes and methods to briefly explain what they do
+- Press `Cmd+Alt+/` to generate documentation with `///`
+
 ### Model
 
 - It may sound boring but clients are just a prettier way to represent the API response. The model is perhaps the most basic thing and we use it a lot in the app. It plays such an important role and there can be some obvious bugs related to malformed models and assumption about how a model should be parsed.
@@ -182,7 +188,7 @@ class RecipesTests: XCTestCase {
 
 - FlowController is used to manage many `UIViewController` related to a common feature.
 - Read [FlowController and Coordinator](https://github.com/onmyway133/blog/issues/106)
-- There are `AppFlowController` that manages changing `rootViewController`. For now it start `RecipesFlowController`
+- There are `AppFlowController` that manages changing `rootViewController`. For now it start `RecipeFlowController`
 
 ```swift
 window = UIWindow(frame: UIScreen.main.bounds)
@@ -191,7 +197,7 @@ window?.makeKeyAndVisible()
 appFlowController.start()
 ```
 
-- `RecipesFlowController` manages, in fact it is, `UINavigationController`, that handles pushing `HomeViewController, RecipesDetailViewController, SafariViewController`
+- `RecipeFlowController` manages, in fact it is, `UINavigationController`, that handles pushing `HomeViewController, RecipesDetailViewController, SafariViewController`
 
 ```swift
 final class RecipeFlowController: UINavigationController {
