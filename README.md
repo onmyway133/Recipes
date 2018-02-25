@@ -344,6 +344,84 @@ if #available(iOS 11, *) {
 }
 ```
 
+### Networking
+
+- Networking in Swift is kinda solved problem. There are tedious and error-prone tasks like parsing HTTP response, handling request queue, handling parameter queries. I've seen bugs about PATCH requests, [lowercased HTTP methods](https://github.com/onmyway133/blog/issues/115), ... We can just use [Alamofire](https://github.com/Alamofire/Alamofire). There 's no need to waste time here.
+- For this app, since it's simple and to avoid unnecessary dependencies. We can just use `URLSession` directly.
+- A resource usually contains url, path, parameters and HTTP method
+
+```swift
+struct Resource {
+  let url: URL
+  let path: String?
+  let httpMethod: String
+  let parameters: [String: String]
+}
+```
+- A simple network service can just parse `Resource` to `URLRequest` and tells `URLSession` to execute
+
+```swift
+final class NetworkService: Networking {
+  @discardableResult func fetch(resource: Resource, completion: @escaping (Data?) -> Void) -> URLSessionTask? {
+    guard let request = makeRequest(resource: resource) else {
+      completion(nil)
+      return nil
+    }
+
+    let task = session.dataTask(with: request, completionHandler: { data, _, error in
+      guard let data = data, error == nil else {
+        completion(nil)
+        return
+      }
+
+      completion(data)
+    })
+
+    task.resume()
+    return task
+  }
+}
+```
+
+- Use dependency injection. Allow caller to specify `URLSessionConfiguration`. Here we make use of Swift default parameter to provide the most common option
+
+
+```swift
+init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
+  self.session = URLSession(configuration: configuration)
+}
+```
+
+- [URLQueryItem](https://developer.apple.com/documentation/foundation/urlqueryitem) was from iOS 8. It makes parsing parameters to query items nicely.
+
+### Testing Networking
+
+- We can use [URLProtocol](https://developer.apple.com/documentation/foundation/urlprotocol) and [URLCache](https://developer.apple.com/documentation/foundation/urlcache) to add stub for network response
+- We can use frameworks like [Mockingjay](https://github.com/kylef/Mockingjay) which swizzles `URLSessionConfiguration`
+- I myself prefer using protocol to test. By using protocol, test can create mock to provide stub response.
+
+```swift
+protocol Networking {
+  @discardableResult func fetch(resource: Resource, completion: @escaping (Data?) -> Void) -> URLSessionTask?
+}
+```
+
+```swift
+final class MockNetworkService: Networking {
+  let data: Data
+  init(fileName: String) {
+    let bundle = Bundle(for: MockNetworkService.self)
+    let url = bundle.url(forResource: fileName, withExtension: "json")!
+    self.data = try! Data(contentsOf: url)
+  }
+
+  func fetch(resource: Resource, completion: @escaping (Data?) -> Void) -> URLSessionTask? {
+    completion(data)
+    return nil
+  }
+}
+```
+
 
 ## Credit
 
