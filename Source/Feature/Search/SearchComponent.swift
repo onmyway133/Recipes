@@ -23,6 +23,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     searchController.searchBar.delegate = self
     searchController.dimsBackgroundDuringPresentation = true
     searchController.hidesNavigationBarDuringPresentation = false
+    searchController.searchBar.placeholder = "Search recipe"
   }
 
   func add(to viewController: UIViewController) {
