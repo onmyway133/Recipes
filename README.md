@@ -331,6 +331,19 @@ final class RecipeDetailView: UIView {
 
 > Begin names of factory methods with “make”, e.g. x.makeIterator().
 
+### Code snippet
+
+- Some syntax are hard to remember, consider using [SwiftSnippets](https://github.com/hyperoslo/SwiftSnippets)
+
+```swift
+if #available(iOS 11, *) {
+  viewController.navigationItem.searchController = searchController
+  viewController.navigationItem.hidesSearchBarWhenScrolling = false
+} else {
+  viewController.navigationItem.titleView = searchController.searchBar
+}
+```
+
 
 ## Credit
 
