@@ -1,15 +1,21 @@
 PODS:
+  - R.swift (4.0.0):
+    - R.swift.Library (~> 4.0.0)
+  - R.swift.Library (4.0.0)
   - SwiftHash (2.0.1)
   - SwiftLint (0.25.0)
 
 DEPENDENCIES:
+  - R.swift (~> 4.0)
   - SwiftHash (~> 2.0)
   - SwiftLint (~> 0.25)
 
 SPEC CHECKSUMS:
+  R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
+  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SwiftHash: c805de5a434eacfa0dac7210745a50c55d7fe33d
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: eef016c6e14cafa93e932582c3445733c0778946
+PODFILE CHECKSUM: 50e70ce7458761321dd026beefe340c38b858fe6
 
 COCOAPODS: 1.4.0

@@ -7,6 +7,7 @@ target 'Recipes' do
  
   pod 'SwiftLint', '~> 0.25'
   pod 'SwiftHash', '~> 2.0'
+  pod 'R.swift', '~> 4.0'
 
   # Pods for Recipes
 
