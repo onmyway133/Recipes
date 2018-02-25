@@ -12,6 +12,7 @@ import Foundation
 final class ThrottleHandler {
   private let delay: TimeInterval
   private let action: () -> Void
+  private var workItem: DispatchWorkItem?
 
   init(delay: TimeInterval, action: @escaping () -> Void) {
     self.delay = delay
@@ -20,6 +21,8 @@ final class ThrottleHandler {
 
   /// Trigger the action after some delay
   func trigger() {
-    
+    workItem?.cancel()
+    workItem = DispatchWorkItem(block: action)
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: workItem!)
   }
 }

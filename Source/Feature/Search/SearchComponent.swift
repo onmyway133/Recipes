@@ -15,6 +15,10 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   let recipeListViewController = RecipeListViewController()
   var task: URLSessionTask?
 
+  /// Avoid making lots of requests when user types fast
+  /// This throttles the search requests
+  var throttleHandler: ThrottleHandler!
+
   required init(recipesService: RecipesService) {
     self.recipesService = recipesService
     self.searchController = UISearchController(searchResultsController: recipeListViewController)
@@ -24,6 +28,10 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
     searchController.dimsBackgroundDuringPresentation = true
     searchController.hidesNavigationBarDuringPresentation = false
     searchController.searchBar.placeholder = "Search recipe"
+
+    throttleHandler = ThrottleHandler(delay: 2, action: { [weak self] in
+      self?.performSearch()
+    })
   }
 
   func add(to viewController: UIViewController) {
@@ -45,10 +53,18 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
   // MARK: - UISearchBarDelegate
 
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    search(query: searchText)
+    throttleHandler.trigger()
   }
 
   // MARK: - Logic
+
+  private func performSearch() {
+    guard let text = searchController.searchBar.text, !text.isEmpty else {
+      return
+    }
+
+    search(query: text)
+  }
 
   private func search(query: String) {
     task?.cancel()
