@@ -33,7 +33,7 @@ final class RecipeListViewController: UIViewController {
     collectionView.contentInset.top = 8
 
     adapter.configure = { recipe, cell in
-      cell.imageView.setImage(url: recipe.imageUrl)
+      cell.imageView.setImage(url: recipe.imageUrl, placeholder: R.image.recipePlaceholder())
       cell.label.text = recipe.title
     }
 
