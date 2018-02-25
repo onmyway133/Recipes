@@ -98,6 +98,12 @@ private final class HeaderView: UIView {
     fatalError()
   }
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    round(corners: .topRight)
+  }
+
   // MARK: - Make
 
   private func makeLabel() -> UILabel {
