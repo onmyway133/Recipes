@@ -39,6 +39,7 @@
 		D28E1F83EB9D0A42FEAE58E6 /* Pods_Recipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0989C260791A5450C452E1 /* Pods_Recipes.framework */; };
 		D29C8B752041622A00F6DFC0 /* RecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C8B742041622A00F6DFC0 /* RecipesUITests.swift */; };
 		D2D14552204186B600B31280 /* RecipeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D14551204186B600B31280 /* RecipeTests.swift */; };
+		D2D5ED3920430E7200BF46BC /* ThrottleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		D29C8B742041622A00F6DFC0 /* RecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesUITests.swift; sourceTree = "<group>"; };
 		D29C8B762041622A00F6DFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2D14551204186B600B31280 /* RecipeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTests.swift; sourceTree = "<group>"; };
+		D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrottleHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				D2144AD92042FA12005CD925 /* SearchComponent.swift */,
+				D2D5ED3820430E7200BF46BC /* ThrottleHandler.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				D2144AA420421328005CD925 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				D2144AC42042267A005CD925 /* AppDelegate.swift in Sources */,
 				D21D3DC82041C22F00EF97BC /* NetworkService.swift in Sources */,
+				D2D5ED3920430E7200BF46BC /* ThrottleHandler.swift in Sources */,
 				D2144AC620422686005CD925 /* AppConfig.swift in Sources */,
 				D2144AD32042F218005CD925 /* UIView+Extensions.swift in Sources */,
 				D2144ACA20422E19005CD925 /* Color.swift in Sources */,
