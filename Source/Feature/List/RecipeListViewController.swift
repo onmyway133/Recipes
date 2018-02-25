@@ -12,6 +12,7 @@ import UIKit
 final class RecipeListViewController: UIViewController {
   private(set) var collectionView: UICollectionView!
   let adapter = Adapter<Recipe, RecipeCell>()
+  private let emptyView = EmptyView(text: "No recipes found!")
 
   // MARK: - Life Cycle
 
@@ -39,10 +40,18 @@ final class RecipeListViewController: UIViewController {
 
     view.addSubview(collectionView)
     NSLayoutConstraint.pin(view: collectionView, toEdgesOf: view)
+
+    view.addSubview(emptyView)
+    NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
+    emptyView.alpha = 0
   }
 
   func handle(recipes: [Recipe]) {
     adapter.items = recipes
     collectionView.reloadData()
+
+    UIView.animate(withDuration: 0.25, animations: {
+      self.emptyView.alpha = recipes.isEmpty ? 1 : 0
+    })
   }
 }
