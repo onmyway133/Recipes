@@ -178,6 +178,40 @@ class RecipesTests: XCTestCase {
 
 ```
 
+### FlowController
+
+- FlowController is used to manage many `UIViewController` related to a common feature.
+- Read [FlowController and Coordinator](https://github.com/onmyway133/blog/issues/106)
+- There are `AppFlowController` that manages changing `rootViewController`. For now it start `RecipesFlowController`
+
+```swift
+window = UIWindow(frame: UIScreen.main.bounds)
+window?.rootViewController = appFlowController
+window?.makeKeyAndVisible()
+appFlowController.start()
+```
+
+- `RecipesFlowController` manages, in fact it is, `UINavigationController`, that handles pushing `HomeViewController, RecipesDetailViewController, SafariViewController`
+
+```swift
+final class RecipeFlowController: UINavigationController {
+  /// Start the flow
+  func start() {
+    let service = RecipesService(networking: NetworkService())
+    let controller = HomeViewController(recipesService: service)
+    viewControllers = [controller]
+    controller.select = { [weak self] recipe in
+      self?.startDetail(recipe: recipe)
+    }
+  }
+
+  private func startDetail(recipe: Recipe) {}
+  private func startWeb(url: URL) {}
+}
+```
+
+- The `UIViewController` can use `delegate` or `closure` to notify `FlowController` about changes or next screen in the flow. For `delegate` there may need for check when there are 2 instances of the same classes. Here we use `closure` for simplicity.
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
