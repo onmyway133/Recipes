@@ -712,6 +712,57 @@ final class HomeViewController: UIViewController {
 </dict>
 ```
 
+### Scrollable View
+
+- For detail screen, we can use `UITableView, UICollectionView` with different cell types. Here views should be static
+- We can stack using `UIStackView`. For more flexibility, we can just use `UIScrollView`
+
+```swift
+/// Vertically layout view using Auto Layout in UIScrollView
+final class ScrollableView: UIView {
+  private let scrollView = UIScrollView()
+  private let contentView = UIView()
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+
+    scrollView.showsHorizontalScrollIndicator = false
+    scrollView.alwaysBounceHorizontal = false
+    addSubview(scrollView)
+
+    scrollView.addSubview(contentView)
+
+    NSLayoutConstraint.activate([
+      scrollView.topAnchor.constraint(equalTo: topAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+      scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+
+      contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      contentView.leftAnchor.constraint(equalTo: leftAnchor),
+      contentView.rightAnchor.constraint(equalTo: rightAnchor)
+    ])
+  }
+}
+```
+
+- We pin `UIScrollView` to edges. We pin `contentView` 's left and right anchor to `self`, while pinning `contentView` 's top and bottom anchor to `UIScrollView`
+- The views inside `contentView` has top and bottom constraints, so when they expand, they expand `contentView` as well. `UIScrollView` uses Auto Layout info from this `contentView` to determine its `contentSize`
+- Here is how `ScrollableView` is used in `RecipeDetailView`
+
+```swift
+scrollableView.setup(pairs: [
+  ScrollableView.Pair(view: imageView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
+  ScrollableView.Pair(view: ingredientHeaderView, inset: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)),
+  ScrollableView.Pair(view: ingredientLabel, inset: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 0)),
+  ScrollableView.Pair(view: infoHeaderView, inset: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)),
+  ScrollableView.Pair(view: instructionButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20)),
+  ScrollableView.Pair(view: originalButton, inset: UIEdgeInsets(top: 8, left: 20, bottom: 0, right: 20)),
+  ScrollableView.Pair(view: infoView, inset: UIEdgeInsets(top: 16, left: 0, bottom: 20, right: 0))
+])
+```
+
 
 ## Credit
 
