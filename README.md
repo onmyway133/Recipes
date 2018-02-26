@@ -763,6 +763,49 @@ scrollableView.setup(pairs: [
 ])
 ```
 
+### Search
+
+- From iOS 8, we can use [UISearchController](https://developer.apple.com/documentation/uikit/uisearchcontroller) to get default search experience with search bar and results controller.
+- Encapsuate search functionality into `SearchComponent` so that it can be plugable
+
+```swift
+final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDelegate {
+  let recipesService: RecipesService
+  let searchController: UISearchController
+  let recipeListViewController = RecipeListViewController()
+}
+```
+
+- From [iOS 11](https://www.hackingwithswift.com/articles/5/how-to-adopt-ios-11-user-interface-changes-in-your-app), there 's property `searchController` on `UINavigationItem`
+
+```swift
+func add(to viewController: UIViewController) {
+  if #available(iOS 11, *) {
+    viewController.navigationItem.searchController = searchController
+    viewController.navigationItem.hidesSearchBarWhenScrolling = false
+  } else {
+    viewController.navigationItem.titleView = searchController.searchBar
+  }
+
+  viewController.definesPresentationContext = true
+}
+```
+
+- Disable `hidesNavigationBarDuringPresentation` for now as it is quite buggy !!!
+
+### Presentation context
+
+- In search, we uses `searchResultsController`
+
+```swift
+self.searchController = UISearchController(searchResultsController: recipeListViewController)
+```
+
+- We need to use [definesPresentationContext](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621456-definespresentationcontext) on the source view controller (the view controller where we add search bar into). Without this we get `searchResultsController` to be presented over full screen !!!
+
+> When using the currentContext or overCurrentContext style to present a view controller, this property controls which existing view controller in your view controller hierarchy is actually covered by the new content. When a context-based presentation occurs, UIKit starts at the presenting view controller and walks up the view controller hierarchy. If it finds a view controller whose value for this property is true, it asks that view controller to present the new view controller. If no view controller defines the presentation context, UIKit asks the window’s root view controller to handle the presentation.
+
+> The default value for this property is false. Some system-provided view controllers, such as UINavigationController, change the default value to true.
 
 ## Credit
 
