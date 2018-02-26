@@ -859,6 +859,15 @@ class DebouncerTests: XCTestCase {
 }
 ```
 
+### Type safe resource
+
+- I use [R.swift](https://github.com/mac-cain13/R.swift) to safely manage resource
+- It can generate type safe classes to access font, localisable strings and colors.
+
+```swift
+imageView.image = R.image.notFound()
+```
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
