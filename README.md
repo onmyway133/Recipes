@@ -652,6 +652,43 @@ class BaseController<T: UIView>: UIViewController {
 final class RecipeDetailViewController: BaseController<RecipeDetailView> {}
 ```
 
+### Child View Controller
+
+- View controller container is so powerful. Each view controller has separation of concern and can be composed together to create advanced features.
+- I have `RecipeListViewController` to manage `UICollectionView` and show list of recipes
+
+```swift
+final class RecipeListViewController: UIViewController {
+  private(set) var collectionView: UICollectionView!
+  let adapter = Adapter<Recipe, RecipeCell>()
+  private let emptyView = EmptyView(text: "No recipes found!")
+}
+```
+
+- I have `HomeViewController` which embeds this `RecipeListViewController`
+
+```swift
+/// Show a list of recipes
+final class HomeViewController: UIViewController {
+
+  /// When a recipe get select
+  var select: ((Recipe) -> Void)?
+
+  private var refreshControl = UIRefreshControl()
+  private let recipesService: RecipesService
+  private let searchComponent: SearchComponent
+  private let recipeListViewController = RecipeListViewController()
+}
+```
+
+### Composition and Dependency Injection
+
+- We see that `ImageService` makes use `NetworkService` and `CacheService`
+- We see that `RecipeDetailViewController` makes use of `Recipe` and `RecipesService`
+- Ideally object should not create dependencies by itself. The dependencies should be created outside and passed down from [root](http://blog.ploeh.dk/2011/07/28/CompositionRoot/).
+- In our app the root is `AppDelegaate` and `AppFlowController`
+
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
