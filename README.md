@@ -688,6 +688,30 @@ final class HomeViewController: UIViewController {
 - Ideally object should not create dependencies by itself. The dependencies should be created outside and passed down from [root](http://blog.ploeh.dk/2011/07/28/CompositionRoot/).
 - In our app the root is `AppDelegaate` and `AppFlowController`
 
+### App Transport Security
+
+- Since iOS 9, all app should adopt [App Transport Security](https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html)
+
+> App Transport Security (ATS) enforces best practices in the secure connections between an app and its back end. ATS prevents accidental disclosure, provides secure default behavior, and is easy to adopt; it is also on by default in iOS 9 and OS X v10.11. You should adopt ATS as soon as possible, regardless of whether you’re creating a new app or updating an existing one.
+
+- In our app, some images are from `HTTP` connection. We need to exclude it from the security rule, but only for that domain only
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSExceptionDomains</key>
+  <dict>
+    <key>food2fork.com</key>
+    <dict>
+      <key>NSIncludesSubdomains</key>
+      <true/>
+      <key>NSExceptionAllowsInsecureHTTPLoads</key>
+      <true/>
+    </dict>
+  </dict>
+</dict>
+```
+
 
 ## Credit
 
