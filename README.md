@@ -611,6 +611,24 @@ extension UIImageView {
 }
 ```
 
+### Generic DataSource
+
+- We use `UITableView, UICollectionView` almost in every apps
+- We do almost the same thing again: show refresh control while loading, reload list in case of data, show error in case of failure.
+- There are many wrappers around `UITableView, UICollection`. Each adds another layer of abstraction, gives more power and restriction at the same time
+- In this app, I use `Adapter` to get generic Data Source, to make type safe collection. Because in the end, all we need is to map from model to cells
+- See [Upstream](https://github.com/hyperoslo/Upstream)
+
+```swift
+final class Adapter<T, Cell: UICollectionViewCell>: NSObject,
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+  var items: [T] = []
+  var configure: ((T, Cell) -> Void)?
+  var select: ((T) -> Void)?
+  var cellHeight: CGFloat = 60
+}
+```
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
