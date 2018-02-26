@@ -868,6 +868,42 @@ class DebouncerTests: XCTestCase {
 imageView.image = R.image.notFound()
 ```
 
+### UI Test
+
+- Sometimes small refactoring can have large effect. UITest help ensuring integrity and functional aspects of the app
+- Test should be declarative. We can use [Robot pattern](https://github.com/hyperoslo/tine-handel-ios/pull/318)
+
+```swift
+class RecipesUITests: XCTestCase {
+  var app: XCUIApplication!
+
+  override func setUp() {
+    super.setUp()
+    continueAfterFailure = false
+
+    app = XCUIApplication()
+  }
+
+  func testScrolling() {
+    app.launch()
+
+    let collectionView = app.collectionViews.element(boundBy: 0)
+    collectionView.swipeUp()
+    collectionView.swipeUp()
+  }
+
+  func testGoToDetail() {
+    app.launch()
+
+    let collectionView = app.collectionViews.element(boundBy: 0)
+    let firstCell = collectionView.cells.element(boundBy: 0)
+    firstCell.tap()
+  }
+}
+```
+
+### 
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
