@@ -902,7 +902,26 @@ class RecipesUITests: XCTestCase {
 }
 ```
 
-### 
+### Main Thread Guard
+
+- Accessing UI from background queue can have potential problems.
+- Before I needed to use [MainThreadGuard](https://github.com/onmyway133/MainThreadGuard)
+- Xcode 9 has [Main Thread Checker](https://developer.apple.com/documentation/code_diagnostics/main_thread_checker)
+
+> The Main Thread Checker is a standalone tool for Swift and C languages that detects invalid usage of AppKit, UIKit, and other APIs on a background thread. Updating UI on a thread other than the main thread is a common mistake that can result in missed UI updates, visual defects, data corruptions, and crashes.
+
+![](Screenshots/MainGuard.png)
+
+### Measurements
+
+- We can use [Instruments](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/index.html) to thoroughly profile the app
+- For quick measurement, we can head over `Debug Navigator` tab and see CPU, Memory, Network usage
+
+![](Screenshots/Measurement.png)
+
+### Playground
+
+- Read [Using Playground with CocoaPods](https://github.com/onmyway133/blog/issues/113)
 
 ## Credit
 
