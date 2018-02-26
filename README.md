@@ -807,6 +807,58 @@ self.searchController = UISearchController(searchResultsController: recipeListVi
 
 > The default value for this property is false. Some system-provided view controllers, such as UINavigationController, change the default value to true.
 
+### Deboucing
+
+- We should not execute search request for every key stroke user types in the search bar. We should do some kind of throttling.
+- We can use `DispatchWorkItem` to encapsuate action and send it to the queue. Later we can cancel it
+
+```swift
+final class Debouncer {
+  private let delay: TimeInterval
+  private var workItem: DispatchWorkItem?
+
+  init(delay: TimeInterval) {
+    self.delay = delay
+  }
+
+  /// Trigger the action after some delay
+  func schedule(action: @escaping () -> Void) {
+    workItem?.cancel()
+    workItem = DispatchWorkItem(block: action)
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: workItem!)
+  }
+}
+```
+
+### Inverted expectation
+
+- To test `Debouncer` we can use `XCTest` expectation in [inverted](https://developer.apple.com/documentation/xctest/xctestexpectation/2806573-isinverted) mode
+- Read [Unit testing asynchronous Swift code](https://www.swiftbysundell.com/posts/unit-testing-asynchronous-swift-code)
+
+> To check that a situation does not occur during testing, create an expectation that is fulfilled when the unexpected situation occurs, and set its isInverted property to true. Your test will fail immediately if the inverted expectation is fulfilled.
+
+```swift
+class DebouncerTests: XCTestCase {
+  func testDebouncing() {
+    let cancelExpectation = self.expectation(description: "cancel")
+    cancelExpectation.isInverted = true
+
+    let completeExpectation = self.expectation(description: "complete")
+    let debouncer = Debouncer(delay: 0.3)
+
+    debouncer.schedule {
+      cancelExpectation.fulfill()
+    }
+
+    debouncer.schedule {
+      completeExpectation.fulfill()
+    }
+
+    wait(for: [cancelExpectation, completeExpectation], timeout: 1)
+  }
+}
+```
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
