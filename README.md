@@ -629,6 +629,29 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 }
 ```
 
+
+### Controller and View
+
+- I ditched Storyboard because of limitation and many issues.
+- I use code to make views and define constraints. It is not that hard to follow
+- Most of the boilerplate code in `UIViewController` is for creating views and configure layout. Let's move those to the view
+- Read [Controller and view](https://github.com/onmyway133/blog/issues/37)
+
+```swift
+/// Used to separate between controller and view
+class BaseController<T: UIView>: UIViewController {
+  let root = T()
+
+  override func loadView() {
+    view = root
+  }
+}
+```
+
+```swift
+final class RecipeDetailViewController: BaseController<RecipeDetailView> {}
+```
+
 ## Credit
 
 - Launch image is from http://desertrosemediapa.com/
