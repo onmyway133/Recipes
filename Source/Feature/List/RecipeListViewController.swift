@@ -32,6 +32,7 @@ final class RecipeListViewController: UIViewController {
     collectionView.register(cellType: RecipeCell.self)
     collectionView.backgroundColor = Color.background
     collectionView.contentInset.top = 8
+    collectionView.alwaysBounceVertical = true
 
     adapter.configure = { recipe, cell in
       cell.imageView.setImage(url: recipe.imageUrl, placeholder: R.image.recipePlaceholder())
