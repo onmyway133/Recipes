@@ -16,6 +16,7 @@ final class EmptyView: UIView {
   required init(text: String) {
     super.init(frame: .zero)
 
+    isUserInteractionEnabled = false
     addSubviews([imageView, label])
     label.text = text
     setupConstraints()
